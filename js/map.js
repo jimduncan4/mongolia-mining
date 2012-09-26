@@ -565,8 +565,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		var sector_dom = jq("#" + sc.id);
 		var sector = sector_dom.attr("sector-name");
 
-		if(Object.include(self.visibleSectors, sector) != un
-		defined || Object.include(self.visibleSectors, sector) != null) {
+		if(Object.include(self.visibleSectors, sector) != undefined || Object.include(self.visibleSectors, sector) != null) {
 		  sector_dom.removeClass('inactive').addClass('active');
 		} else {
 		  sector_dom.removeClass('active').addClass('inactive');			
