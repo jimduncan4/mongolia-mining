@@ -23,7 +23,7 @@
   "Locationold": {attribute:"Mineral type",categories:{"Gold": iconhost+"gold-14.png","Manganese": iconhost+"manganese-14.png","Bauxite": iconhost+"bauxite-14.png","Other": iconhost+"other-14.png"}},
   "Location": {"type":"POINT","icon":{"size":.75},"attribute":"Mineral type","categories":{"Gold": iconhost+"gold-14.png","Manganese": iconhost+"manganese-14.png","Bauxite": iconhost+"bauxite-14.png","Other": iconhost+"other-14.png"},"infoWindowFilter": {"subtitle":"$[Mineral type]"}}
   },
-  "License": {
+  "Licenses": {
    infoWindowFilter:{"title": "Licences","subtitle": "HELLO"},
   "Production percent": {"infoWindowFilter": {"subtitle": "Percent of soum under production license: $[prod_pct]%"},"icon": {"opacity": 0.75,"size": 1,"symbol": "propCircle","propSize": null,"classificationType": "Quantile","gradSize": 1,"dropShadow": true,"selectedAttribute": "prod_pct","categories": 5, "classificationNumClasses": 6, "color": 16687913},"type": "GRADUATED","stroke": {"alpha": 1,"weight": 1,"color": 12611072},"fill": {"opacity": 0.75,"color": 16687913}},
   "Production count": {"infoWindowFilter": {"subtitle": "Number of production licenses in soum: $[prod_count]"},"icon": {"opacity": 0.75,"size": 1,"symbol": "propCircle","propSize": null,"classificationType": "Quantile","gradSize": 1,"dropShadow": true,"selectedAttribute": "prod_count","categories": 5,"color": 16709541},"type": "GRADUATED","stroke": {"alpha": 1,"weight": 1,"color": 16687913},"fill": {"opacity": 0.75,"color": 16709541}},
