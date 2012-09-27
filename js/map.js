@@ -294,6 +294,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	setExtractiveIndicator: function(indicator, attribute, title, visible) {
 		var self = this;
 	
+	  	//s_attr points to the extractives.js definitions to get values for filtering, naming tabs and titles, etc.
+	  	var s_attr = F1.WorldBank.extractives[indicator][attribute]; 
+		
 		//if user is looking at district revenues, hide mine/oil points
 		if(indicator == "District revenues") { 
 			self.map.showLayer(self.stylelayers["Mines"].guid, false);
@@ -305,14 +308,13 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  	else { 
 		        //District revenues check and Mines check disables
 		        //self.map.showLayer(self.stylelayers["District revenues"].guid, false);
+ 	      		//self.map.clearFilters(self.stylelayers[indicator].guid);
+	      		//self.map.addFilter(self.stylelayers[indicator].guid, {expression : s_attr["expression"]});
         		self.map.showLayer(self.stylelayers["Licenses"].guid, true);
-        		//self.map.showLayer(self.stylelayers["Mines"].guid, true);
+	       		//self.map.showLayer(self.stylelayers["Mines"].guid, true);
         		//self.map.showLayer(self.stylelayers["Oil wells"].guid, true);	      
 		}
 	  
-	  	//s_attr points to the extractives.js definitions to get values for filtering, naming tabs and titles, etc.
-	  	var s_attr = F1.WorldBank.extractives[indicator][attribute]; 
-		
 		//When showing by location, first assign image icons based on the Mineral Type attribute, then use setLayerStyle to trigger a change the in layer styling.
 	  	if(attribute == "Location"){
 	  	 	self.map.setLayerStyle(self.stylelayers[indicator].guid, s_attr);
@@ -322,7 +324,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
     	  		// s_attr.icon.selectedAttribute = attribute;
 	      		log("s_attr",s_attr["expression"])
 	      		self.map.clearFilters(self.stylelayers[indicator].guid);
-	      		self.map.addFilter(self.stylelayers[indicator].guid, {expression : s_attr["expression"]})
+	      		self.map.addFilter(self.stylelayers[indicator].guid, {expression : s_attr["expression"]});
 	      		self.map.setLayerStyle(self.stylelayers[indicator].guid, s_attr);	      		
 	  	}
 	  
