@@ -102,6 +102,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	"Number of Households": {source: "finder:", title:"Number of Households", subtitle: "", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [5313667, 8608676, 12619965, 14924738, 16573399], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "housenum"}}, infosubtitle: "The number of households in each aimag", table: null, description: "The number of households in each aimag in 2010. \nSource:  <a href='http://www.nso.mn/v3/index2.php?page=free_access' target='_new'>National Statistical Office of Mongolia</a>."},	
 	"Mineral deposits": {source: "finder:", title:"Mineral deposits", selectedAttribute: "mineral", styles: {}},
 	"Mines": {source: "finder:", title:"Mines", selectedAttribute: "mines", styles: {}},
+	"Licenses":{source: "finder:", title:"Licenses", selectedAttribute:"licenses",styles: {}},
 	"Oil wells": {source: "finder:", title:"Oil wells", selectedAttribute: "oil", styles: {}}, 
 	"District revenues": {source: "finder:", title:"District revenues", selectedAttribute: "TOTAL_REC", styles: {}}	
 	};
@@ -295,12 +296,14 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		//if user is looking at district revenues, hide mine/oil points
 		if(indicator == "District revenues") { 
 			self.map.showLayer(self.stylelayers["Mines"].guid, false);
-          		self.map.showLayer(self.stylelayers["Oil wells"].guid, false);	      
+			self.map.showLayer(self.stylelayers["Licenses"].guid, false);
+			self.map.showLayer(self.stylelayers["Oil wells"].guid, false);	      
           		self.map.showLayer(self.stylelayers["District revenues"].guid, true);
           	}
 	  	// if user is looking at mine/oil points, hide district revenues
 	  	else { 
 		        self.map.showLayer(self.stylelayers["District revenues"].guid, false);
+        		self.map.showLayer(self.stylelayers["Licenses"].guid, false);
         		self.map.showLayer(self.stylelayers["Mines"].guid, true);
         		self.map.showLayer(self.stylelayers["Oil wells"].guid, true);	      
 		}
@@ -1125,7 +1128,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	},	  
     getLayers: function() {
         var self = this;
-       	var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Number of Physicians", "Number of Households", "Unemployment", "Mines", "Oil wells", "Oil fields", "District revenues", "Mineral deposits", "No Data"];
+       	var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Number of Physicians", "Number of Households", "Unemployment", "Mines", "Licenses","Oil wells", "Oil fields", "District revenues", "Mineral deposits", "No Data"];
 
 	possibleLayers = self.map.getLayers();
         
@@ -1325,6 +1328,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             self.toggleExtractive("Oil fields","all", true)     
             self.map.setMapStyle( {zoom: { offset: {x:15,y:90}}} )
             self.setExtractiveIndicator('Mines','Total production','Production',true)
+            self.setExtractiveIndicator('Licenses','prod_pct','Production, Percent of Soum',true)
             self.setExtractiveIndicator('Oil wells','Lift total','Production',true)
             self.map.addLayerCategoryFilter(self.stylelayers["Mines"].guid,F1.WorldBank.extractives["Mines"]["Location"])
             self.map.addLayerCategoryFilter(self.stylelayers["Mineral deposits"].guid,F1.WorldBank.extractives["Mineral deposits"]["Deposits"])
