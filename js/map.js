@@ -308,8 +308,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  	else { 
 		        //District revenues check and Mines check disables
 		        //self.map.showLayer(self.stylelayers["District revenues"].guid, false);
- 	      		//self.map.clearFilters(self.stylelayers[indicator].guid);
-	      		//self.map.addFilter(self.stylelayers[indicator].guid, {expression : s_attr["expression"]});
+ 	      		self.map.clearFilters(self.stylelayers[indicator].guid);
+	      		self.map.addFilter(self.stylelayers[indicator].guid, {expression : s_attr["expression"]});
         		self.map.showLayer(self.stylelayers["Licenses"].guid, true);
 	       		//self.map.showLayer(self.stylelayers["Mines"].guid, true);
         		//self.map.showLayer(self.stylelayers["Oil wells"].guid, true);	      
@@ -323,8 +323,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  	else {
     	  		// s_attr.icon.selectedAttribute = attribute;
 	      		log("s_attr",s_attr["expression"])
-	      		self.map.clearFilters(self.stylelayers[indicator].guid);
-	      		self.map.addFilter(self.stylelayers[indicator].guid, {expression : s_attr["expression"]});
+	      		//self.map.clearFilters(self.stylelayers[indicator].guid);
+	      		//self.map.addFilter(self.stylelayers[indicator].guid, {expression : s_attr["expression"]});
 	      		self.map.setLayerStyle(self.stylelayers[indicator].guid, s_attr);	      		
 	  	}
 	  
