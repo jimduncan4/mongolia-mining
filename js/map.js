@@ -320,6 +320,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  	//When showing by quantities, use the styling information contained in the layer definition - needs to be separate
 	  	else {
     	  		// s_attr.icon.selectedAttribute = attribute;
+	      		log("s_attr",s_attr["expression"])
 	      		self.map.clearFilters(self.stylelayers[indicator].guid);
 	      		self.map.addFilter(self.stylelayers[indicator].guid, {expression : s_attr["expression"]})
 	      		self.map.setLayerStyle(self.stylelayers[indicator].guid, s_attr);	      		
