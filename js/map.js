@@ -302,10 +302,11 @@ if(typeof(F1)=='undefined') {F1 = {};}
           	}
 	  	// if user is looking at mine/oil points, hide district revenues
 	  	else { 
-		        self.map.showLayer(self.stylelayers["District revenues"].guid, false);
+		        //District revenues check and Mines check disables
+		        //self.map.showLayer(self.stylelayers["District revenues"].guid, false);
         		self.map.showLayer(self.stylelayers["Licenses"].guid, false);
-        		self.map.showLayer(self.stylelayers["Mines"].guid, true);
-        		self.map.showLayer(self.stylelayers["Oil wells"].guid, true);	      
+        		//self.map.showLayer(self.stylelayers["Mines"].guid, true);
+        		//self.map.showLayer(self.stylelayers["Oil wells"].guid, true);	      
 		}
 	  
 	  	//s_attr points to the extractives.js definitions to get values for filtering, naming tabs and titles, etc.
@@ -1323,17 +1324,17 @@ if(typeof(F1)=='undefined') {F1 = {};}
             jq('#active_projects_header').html("Ghana Cedis of revenue in")
             jq('#activity_count').html(14);
             jq('#mapped_locations_header').html("mapped locations")
-            self.toggleExtractive("Mines","all", true)
-            self.toggleExtractive("Mineral deposits","all", false)
-            self.toggleExtractive("Oil fields","all", true)     
+            //self.toggleExtractive("Mines","all", true)
+            //self.toggleExtractive("Mineral deposits","all", false)
+            //self.toggleExtractive("Oil fields","all", true)     
             self.map.setMapStyle( {zoom: { offset: {x:15,y:90}}} )
-            self.setExtractiveIndicator('Mines','Total production','Production',true)
+            //self.setExtractiveIndicator('Mines','Total production','Production',true)
             self.setExtractiveIndicator('Licenses','prod_pct','Production, Percent of Soum',true)
-            self.setExtractiveIndicator('Oil wells','Lift total','Production',true)
-            self.map.addLayerCategoryFilter(self.stylelayers["Mines"].guid,F1.WorldBank.extractives["Mines"]["Location"])
-            self.map.addLayerCategoryFilter(self.stylelayers["Mineral deposits"].guid,F1.WorldBank.extractives["Mineral deposits"]["Deposits"])
+            //self.setExtractiveIndicator('Oil wells','Lift total','Production',true)
+            //self.map.addLayerCategoryFilter(self.stylelayers["Mines"].guid,F1.WorldBank.extractives["Mines"]["Location"])
+            //self.map.addLayerCategoryFilter(self.stylelayers["Mineral deposits"].guid,F1.WorldBank.extractives["Mineral deposits"]["Deposits"])
             //self.map.setLayerStyle(self.stylelayers["Oil wells"].guid,F1.WorldBank.extractives["Oil wells"]["Location"])
-            self.map.setLayerStyle(self.stylelayers["Mineral deposits"].guid, F1.WorldBank.extractives["Mineral deposits"]["Deposits"])
+            //self.map.setLayerStyle(self.stylelayers["Mineral deposits"].guid, F1.WorldBank.extractives["Mineral deposits"]["Deposits"])
             self.minesPieChart() 
         }
         self.loadState();
