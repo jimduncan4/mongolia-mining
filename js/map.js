@@ -293,6 +293,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	},
 	setExtractiveIndicator: function(indicator, attribute, title, visible) {
 		var self = this;
+	
 		//if user is looking at district revenues, hide mine/oil points
 		if(indicator == "District revenues") { 
 			self.map.showLayer(self.stylelayers["Mines"].guid, false);
@@ -319,7 +320,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  	//When showing by quantities, use the styling information contained in the layer definition - needs to be separate
 	  	else {
     	  		// s_attr.icon.selectedAttribute = attribute;
-	      		self.map.setLayerStyle(self.stylelayers[indicator].guid, s_attr);
+	      		self.map.clearFilters(self.stylelayers[indicator].guid);
+	      		self.map.addFilter(self.stylelayers[indicator].guid, expression : s_attr["expression"])
+	      		self.map.setLayerStyle(self.stylelayers[indicator].guid, s_attr);	      		
 	  	}
 	  
 	  	self.map.setLayerInfoWindow(self.stylelayers[indicator].guid, {
