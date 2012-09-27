@@ -95,12 +95,14 @@ if(typeof(F1)=='undefined') {F1 = {};}
 
   F1.WorldBank.indicators = {
 	"Poverty": {source: "finder:", title:"Poverty", subtitle: "Headcount Index", styles: { type: "CHOROPLETH",fill: { colors: [16709541,16698989,15500308,11422722,6694150], categories: 5, classificationNumClasses: 6, classificationType: "St Dev", opacity: 0.75, selectedAttribute: "poverty" }}, infosubtitle: null, table: null, description: "The headcount index is a measure of the percent of the population living below the poverty line. Poverty data was obtained from World Bank Poverty Assessments, CIESIN Small Area Estimates, and national statistics bureaus.  See the data source page for information regarding the source of poverty data for each country"},
-	"Infant Mortality": {source: "finder:", title:"Infant Mortality Rate", subtitle: "Per 1,000 live births", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "infantmort"}}, infosubtitle: null, table: null, description: "Infant deaths per 1,000 live births in the 2nd quarter of 2012. Infant mortality rate is the number of infant deaths (deaths before reaching one year of age) per 1,000 for the ten year period preceding the survey.\nSource: <a href='http://www.nso.mn/v3/index2.php?page=free_access' target='_new'>National Statistical Office of Mongolia</a>."},	
-	"Population": {source: "finder:", title:"Population", subtitle: "Number of People", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [0xEFF3FF, 0xBDD7E7, 0x6BAED6, 0x3182BD, 0x08519C], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "population"}}, infosubtitle: "The number of people in each aimag", table: null, description: "The number of people in each aimag in 2010.\nSource: <a href='http://www.nso.mn/v3/index2.php?page=free_access' target='_new'>National Statistical Office of Mongolia</a>."},
-	"Unemployment": {source: "finder:", title:"Unemployment", subtitle: "", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "unemployment"}}, infosubtitle: "The percentage of the regional population not employed in the 12 months prior to the survey", table: null, description: "The number of people in each aimag not employed in the first half of 2012. Source:  <a href='http://www.nso.mn/v3/index2.php?page=free_access' target='_new'>National Statistical Office of Mongolia</a>."},	
-	"Number of Physicians": {source: "finder:", title:"Number of Physicians", subtitle: "", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [15456706, 13744031, 10782317, 8151635, 4863020], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "physnum"}}, infosubtitle: "The number of physicians in each aimag", table: null, description: "The number of physicians in each aimag in 2010. \nSource:  <a href='http://www.nso.mn/v3/index2.php?page=free_access' target='_new'>National Statistical Office of Mongolia</a>."},	
-	"Number of Households": {source: "finder:", title:"Number of Households", subtitle: "", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [5313667, 8608676, 12619965, 14924738, 16573399], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "housenum"}}, infosubtitle: "The number of households in each aimag", table: null, description: "The number of households in each aimag in 2010. \nSource:  <a href='http://www.nso.mn/v3/index2.php?page=free_access' target='_new'>National Statistical Office of Mongolia</a>."},	
+	"Malnutrition": {source: "finder:", title:"Child Malnutrition", subtitle: "Percentile weight of Children under 5", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [15456706, 13744031, 10782317, 8151635, 4863020], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Weightfora"}}, infosubtitle: null, table: null, description: "Percent of children under age 5 whose weight-for-age is more than two standard deviations below the median for the international reference population ages 0-59 months. The data are based on the World Health Organization’s child growth standards released in 2006.\nSource: Demographic and Health Surveys implemented by ICF International."},
+	"Infant Mortality": {source: "finder:", title:"Infant Mortality Rate", subtitle: "Per 1,000 live births", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Infant_mor"}}, infosubtitle: null, table: null, description: "Mortality rate, infant deaths per 1,000 live births. Infant mortality rate is the number of infant deaths (deaths before reaching one year of age) per 1,000 for the ten year period preceding the survey.\nSource: Demographic and Health Surveys implemented by ICF International."},	
+	"Maternal Health": {source: "finder:", title:"Births attended by skilled health staff ", subtitle: "% of Total", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [5313667, 8608676, 12619965, 14924738, 16573399], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "dbhp"}}, infosubtitle: null,table: null, description: "Percent of live births in the last three years preceding the survey assisted by a skilled health provider (doctor or other health professional).\nSource: Demographic and Health Surveys implemented by ICF International."},
+	"Population": {source: "finder:", title:"Population", subtitle: "Total Number of People", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [0xEFF3FF, 0xBDD7E7, 0x6BAED6, 0x3182BD, 0x08519C], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "population from statoids"}}, infosubtitle: null, table: null, description: "The land area of the world is divided into countries (1). Most of the countries are, in turn, divided into smaller units. These units may be called states, provinces, regions, governorates, and so on. A phrase that describes them all is 'major administrative divisions of countries'.\n\nSource: <a href='http://www.statoids.com'>Statoids"},
+	"Unemployment Rate": {source: "finder:", title:"Unemployment Rate", subtitle: "", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Unemployment Rate"}}, infosubtitle: "The percentage of the regional population not employed in the 12 months prior to the survey", table: null, description: "The percentage of the population in each first-order administrative unit that were not employed in the 12 months prior to the survey. Source:  <a href='http://www.measuredhs.com/countries/country_main.cfm?ctry_id=14' target='_new'>Demographic and Health Surveys by International International</a>."},	
+	"Population Density": {source: "finder:", title:"Population Density", subtitle: "Per square kilometer", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "Population density"}}, infosubtitle: null, table: null, description: "Population Density, measured in population per square kilometers, is a result of calculations made by the Mapping for Results team. Population data was compiled from statistics bureaus and used to calculate population density. The population data was divided by the total area for each province or district. Official population density statistics were used in place of these calculations where available. These data are estimates only and are not official numbers."},
 	"Mineral deposits": {source: "finder:", title:"Mineral deposits", selectedAttribute: "mineral", styles: {}},
+ "Diamond deposits": {source: "finder:", title:"Diamond deposits", selectedAttribute:"grade",styles: {}},
 	"Mines": {source: "finder:", title:"Mines", selectedAttribute: "mines", styles: {}},
 	"Oil wells": {source: "finder:", title:"Oil wells", selectedAttribute: "oil", styles: {}}, 
 	"District revenues": {source: "finder:", title:"District revenues", selectedAttribute: "TOTAL_REC", styles: {}}
@@ -292,32 +294,41 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  return false;
 	},
 	setExtractiveIndicator: function(indicator, attribute, title, visible) {
-	  var self = this;
-	  if(indicator == "District revenues") {
-          self.map.showLayer(self.stylelayers["Mines"].guid, false);
-          self.map.showLayer(self.stylelayers["Oil wells"].guid, false);	      
-          self.map.showLayer(self.stylelayers["District revenues"].guid, true);
-	  }
-	  else {
-          self.map.showLayer(self.stylelayers["District revenues"].guid, false);
-          self.map.showLayer(self.stylelayers["Mines"].guid, true);
-          self.map.showLayer(self.stylelayers["Oil wells"].guid, true);	      
-	  }
-      
-      var s_attr = F1.WorldBank.extractives[indicator]
-	  if(attribute == "Icons"){
-        self.map.addLayerCategoryFilter(self.stylelayers[indicator].guid, F1.WorldBank.extractives[indicator]["Icons"]);
-	  } else {
-    	  s_attr = F1.WorldBank.extractives[indicator][attribute];
-    	  // s_attr.icon.selectedAttribute = attribute;
-	      self.map.setLayerStyle(self.stylelayers[indicator].guid, s_attr);
-	  }
-	  //self.map.setLayerInfoWindow(self.stylelayers[indicator].guid, {
-	  //       title: F1.WorldBank.extractives[indicator]["infoWindowFilter"]["title"], 
-	  //      subtitle: s_attr["infoWindowFilter"]["subtitle"], tabs: F1.WorldBank.extractives[indicator]["infoWindowFilter"]["tabs"]});
-	  jq('#layercontrol_extractives').html(title);
-	  return false;
+		var self = this;
+		//if user is looking at district revenues, hide mine/oil points
+		if(indicator == "District revenues") { 
+			self.map.showLayer(self.stylelayers["Mines"].guid, false);
+          		self.map.showLayer(self.stylelayers["Oil wells"].guid, false);	      
+          		self.map.showLayer(self.stylelayers["District revenues"].guid, true);
+          	}
+	  	// if user is looking at mine/oil points, hide district revenues
+	  	else { 
+		        self.map.showLayer(self.stylelayers["District revenues"].guid, false);
+        		self.map.showLayer(self.stylelayers["Mines"].guid, true);
+        		self.map.showLayer(self.stylelayers["Oil wells"].guid, true);	      
+		}
+	  
+	  	//s_attr points to the extractives.js definitions to get values for filtering, naming tabs and titles, etc.
+	  	var s_attr = F1.WorldBank.extractives[indicator][attribute]; 
+		
+		//When showing by location, first assign image icons based on the Mineral Type attribute, then use setLayerStyle to trigger a change the in layer styling.
+	  	if(attribute == "Location"){
+	  	 	self.map.setLayerStyle(self.stylelayers[indicator].guid, s_attr);
+	  	} 
+	  	//When showing by quantities, use the styling information contained in the layer definition - needs to be separate
+	  	else {
+    	  		// s_attr.icon.selectedAttribute = attribute;
+	      		self.map.setLayerStyle(self.stylelayers[indicator].guid, s_attr);
+	  	}
+	  
+	  	self.map.setLayerInfoWindow(self.stylelayers[indicator].guid, {
+	  		title: F1.WorldBank.extractives[indicator]["infoWindowFilter"]["title"], 
+	        	subtitle: s_attr["infoWindowFilter"]["subtitle"], tabs: F1.WorldBank.extractives[indicator]["infoWindowFilter"]["tabs"]});
+	  	
+	  	jq('#layercontrol_extractives').html(title);
+	  	return false;
 	},
+	
 	toggleExtractive: function(layer,sector,visible) {   
 	    var self = this;
          if(layer == "Oil") {
@@ -366,7 +377,19 @@ if(typeof(F1)=='undefined') {F1 = {};}
                  }
              }
              self.showVisibleMines();            
-         } else if(layer == "Mineral deposits") {
+ } else if (layer == "Diamond deposits") {
+ var classname="#" + sector + "deposit_control";
+ if (jq(classname).hasClass('inactive')){
+ jq(classname).removeClass('inactive').addClass('active');
+ self.map.showLayer(self.stylelayers["Diamond deposits"].guid, true);
+ } else {
+ jq(classname).removeClass('active').addClass('inactive');
+ self.map.showLayer(self.stylelayers["Diamond deposits"].guid, false);
+ }
+
+ 
+ }
+             else if(layer == "Mineral deposits") {
              var classname = "#" + sector + "deposit_control";
              if(visible == true || jq(classname).hasClass("inactive")) {
                  if(sector == "all") {
@@ -414,8 +437,10 @@ if(typeof(F1)=='undefined') {F1 = {};}
     showVisibleDeposits: function() {
         var self = this;
         var layer = "Mineral deposits"
+        
         self.map.clearFilters(self.stylelayers[layer].guid);
- self.map.showLayer(self.stylelayers[layer].guid, true);
+        self.map.showLayer(self.stylelayers[layer].guid, true);
+        
         var visibleDeposits = jq.map(jq('#ore_sectors li a'), function(el,index) {
             if( jq(el).hasClass('active'))
             return jq(el).attr("original-title")
@@ -428,7 +453,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
             self.map.showLayer(self.stylelayers[layer].guid, false);
         }
     },
-	toggleSector: function(sector,visible,refreshCharts) {
+ 
+ 	toggleSector: function(sector,visible,refreshCharts) {
 	  var self = this;
 	  var visibleExpression = "";
 	  if(self.stylelayers["Project Locations"] === undefined || self.stylelayers["Project Locations"] === null) // World Map
@@ -602,9 +628,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	},	  
 	setIndicator: function(indicator,visible) {
 	  var self = this;
+	  
 	  log("indicator", indicator)	  
 	  log("self.current_indicator",self.current_indicator)
-
 	  if(self.stylelayers[self.current_indicator] !== undefined)
 		self.map.showLayer(self.stylelayers[self.current_indicator].guid, false);
 		
@@ -614,7 +640,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  }
 	  else {
 		jq('#layercontrol_indicators').html(indicator);
-		log("html attached")
+		
 		var style = F1.WorldBank.indicators[indicator].styles;
 		style.source = self.stylelayers[indicator].source;
 		
@@ -1102,7 +1128,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	},	  
     getLayers: function() {
         var self = this;
-        var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Number of Physicians", "Number of Households", "Unemployment", "Mines", "Oil wells", "Oil fields", "District revenues", "Mineral deposits", "No Data"];
+        var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition", "Unemployment Rate", "Population Density", "Mines", "Oil wells", "Oil fields", "District revenues", "Mineral deposits", "Diamond deposits", "No Data", "Total employment"];
         possibleLayers = self.map.getLayers();
         
         var index;
@@ -1110,7 +1136,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             index = Object.include(findlayers, possibleLayers[layer].title);
             if(index !== undefined && index !== null){
                 self.stylelayers[findlayers[index]] = {guid: possibleLayers[layer].guid, order: possibleLayers[layer].order, source: possibleLayers[layer].source, sharedLayer: false};
-                if(Object.include(["Infant Mortality", "Population", "Poverty", "Number of Physicians", "Number of Households", "Unemployment"], possibleLayers[layer].title)) {
+                if(Object.include(["Infant Mortality", "Population", "Poverty", "Maternal Health", "Malnutrition", "Unemployment Rate", "Population Density"], possibleLayers[layer].title)) {
                     F1.WorldBank.indicators[possibleLayers[layer].title].styles.fill.selectedAttribute = possibleLayers[layer].styles.fill.selectedAttribute;
                 }
                 findlayers.splice(index,1);
@@ -1148,7 +1174,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             else
                 format = download
             if(self.stylelayers[index] !== undefined) 
-                jq("#data_links").append("<li><a href='http://maps.worldbank.org/datasets/" + self.stylelayers[index].source.replace('finder:','') +"."+format+"'>"+index+" ("+download+")</a></li>");
+                jq("#data_links").append("<li><a href='http://geocommons.com/overlays/" + self.stylelayers[index].source.replace('finder:','') +"."+format+"'>"+index+" ("+download+")</a></li>");
             
         })
         // if(self.stylelayers["Project Counts"] !== undefined)
@@ -1301,8 +1327,11 @@ if(typeof(F1)=='undefined') {F1 = {};}
             self.toggleExtractive("Oil fields","all", true)     
             self.map.setMapStyle( {zoom: { offset: {x:15,y:90}}} )
             self.setExtractiveIndicator('Mines','Total production','Production',true)
-            self.map.addLayerCategoryFilter(self.stylelayers["Mines"].guid,{attribute:"mineral ty",categories:{"Gold":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_gold.png","Bauxite":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_bauxite.png","Manganese":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_manganese.png","Other":"http://maps.worldbank.org/images/icons/worldbank/extractives/small_other.png"}})
-            self.map.addLayerCategoryFilter(self.stylelayers["Mineral deposits"].guid,{attribute:"mineral ty",categories:{"Gold":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_gold.png","Bauxite":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_bauxite.png","Manganese":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_manganese.png","Other":"http://maps.worldbank.org/images/icons/worldbank/extractives/small_other.png"}})
+            self.setExtractiveIndicator('Oil wells','Lift total','Production',true)
+            self.map.addLayerCategoryFilter(self.stylelayers["Mines"].guid,F1.WorldBank.extractives["Mines"]["Location"])
+            self.map.addLayerCategoryFilter(self.stylelayers["Mineral deposits"].guid,F1.WorldBank.extractives["Mineral deposits"]["Deposits"])
+            //self.map.setLayerStyle(self.stylelayers["Oil wells"].guid,F1.WorldBank.extractives["Oil wells"]["Location"])
+            self.map.setLayerStyle(self.stylelayers["Mineral deposits"].guid, F1.WorldBank.extractives["Mineral deposits"]["Deposits"])
             self.minesPieChart() 
         }
         self.loadState();
