@@ -1329,7 +1329,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             //self.toggleExtractive("Oil fields","all", true)     
             self.map.setMapStyle( {zoom: { offset: {x:15,y:90}}} )
             //self.setExtractiveIndicator('Mines','Total production','Production',true)
-            self.setExtractiveIndicator('Licenses','prod_pct','Production, Percent of Soum',true)
+            self.setExtractiveIndicator('Licenses','Production percent','Production, Percent of Soum',true)
             //self.setExtractiveIndicator('Oil wells','Lift total','Production',true)
             //self.map.addLayerCategoryFilter(self.stylelayers["Mines"].guid,F1.WorldBank.extractives["Mines"]["Location"])
             //self.map.addLayerCategoryFilter(self.stylelayers["Mineral deposits"].guid,F1.WorldBank.extractives["Mineral deposits"]["Deposits"])
