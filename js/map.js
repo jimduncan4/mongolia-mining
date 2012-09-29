@@ -1,4 +1,4 @@
-var proxy_host = "http://geocommons.com";	
+var proxy_host = "http://geocommons.com";    
 var project_attributes = ["id","project_name","totalamt","prodlinetext","grantamt","mjsector1","boardapprovaldate","majorsector_percent"];
 var major_sector_name = "mjsector 1";
 var barchart;
@@ -1079,7 +1079,7 @@ function(){
                     })
             pie_options = {"features":minerals,
                 "attributes": {"data":{"name": "Total government receipts","original_name": "Total_government_receipts"},
-                    "description":{"name": "Mineral Type","original_name": "mineral_type"},
+                    "description":{"name": "Mineral Type","original_name": "mineral ty"},
                     "sort":{"name": "Total government receipts","original_name": "Total_government_receipts"} } };
             
             var colors = ["#ffcc00", "#ff8e3a", "#7a7efe"]
@@ -1565,4 +1565,4 @@ function(){
     }
     // jq("#sall").attr('checked', true);
     
-})();
+})();  
