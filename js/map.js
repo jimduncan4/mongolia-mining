@@ -49,7 +49,7 @@ function fbs_click() {
 
 if(typeof(F1)=='undefined') {F1 = {};}
 
-function(){
+(function(){
     if(typeof String.prototype.trim != 'function') {
         String.prototype.trim = function() 
         {
