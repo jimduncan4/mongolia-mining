@@ -434,7 +434,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 } 
                 else {
                     jq(classname).removeClass('active').addClass('inactive');
-                    }
                 }
                 self.showVisibleMines(layer);
             }
@@ -446,7 +445,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 } 
                 else {
                     jq(classname).removeClass('active').addClass('inactive');
-                    }
                 }
                 self.showVisibleMines(layer);
             }
@@ -482,10 +480,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
             return false;
         },
         
-    showVisibleMines: function() 
+    showVisibleMines: function(layer) 
         {
             var self = this;
-            var layer = "Mines"
             self.map.clearFilters(self.stylelayers[layer].guid);
             self.map.showLayer(self.stylelayers[layer].guid, true);
             var visibleMines = jq.map(jq('#mines_sectors li a'), function(el,index) {
