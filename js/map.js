@@ -122,11 +122,12 @@ if(typeof(F1)=='undefined') {F1 = {};}
         "Unemployment": {source: "finder:", title:"Unemployment", subtitle: "", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "unemployment"}}, infosubtitle: "The percentage of the regional population not employed in the 12 months prior to the survey", table: null, description: "The number of people in each aimag not employed in the first half of 2012. Source: <a href='http://www.nso.mn/v3/index2.php?page=free_access' target='_new'>National Statistical Office of Mongolia</a>."},	
         "Number of Physicians": {source: "finder:", title:"Number of Physicians", subtitle: "", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [15456706, 13744031, 10782317, 8151635, 4863020], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "physnum"}}, infosubtitle: "The number of physicians in each aimag", table: null, description: "The number of physicians in each aimag in 2010. \nSource: <a href='http://www.nso.mn/v3/index2.php?page=free_access' target='_new'>National Statistical Office of Mongolia</a>."},	
         "Number of Households": {source: "finder:", title:"Number of Households", subtitle: "", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [5313667, 8608676, 12619965, 14924738, 16573399], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "housenum"}}, infosubtitle: "The number of households in each aimag", table: null, description: "The number of households in each aimag in 2010. \nSource: <a href='http://www.nso.mn/v3/index2.php?page=free_access' target='_new'>National Statistical Office of Mongolia</a>."},	
- //       "Soum Boundaries":{source: "finder:", title:"Soums", selectedAttribute:"soumnameen",subtitle: "",styles: {type: "PRIMITIVE",stroke: {color: 0x222222, weight: 1, opacity: 0.75},fill:{color:[0xCCCC66],opacity: 0.75}},infosubtitle: "%[soumnameen] Soum", table: null, description: "Soum boundaries provided by the <a href='http://www.icc.mn/' target='_new'>Environmental Information Center</a>."},
+        "Soum Boundaries":{source: "finder:", title:"Soums", selectedAttribute:"soumnameen",subtitle: "",styles: {type: "PRIMITIVE",stroke: {color: 0x222222, weight: 1, opacity: 0.75},fill:{color:[0xCCCC66],opacity: 0.75}},infosubtitle: "%[soumnameen] Soum", table: null, description: "Soum boundaries provided by the <a href='http://www.icc.mn/' target='_new'>Environmental Information Center</a>."},
         "Mineral deposits": {source: "finder:", title:"Mineral deposits", selectedAttribute: "mineral", styles: {}},
         "Mines": {source: "finder:", title:"Mines", selectedAttribute: "mines", styles: {}},
         "Licenses":{source: "finder:", title:"Licenses", selectedAttribute:"licenses",styles: {}},
         "EITI":{source: "finder:", title:"EITI", selectedAttribute:"eiti",styles: {}},
+        "Company":{source: "finder:", title:"Company", selectedAttribute:"company",styles: {}},
         "Oil wells": {source: "finder:", title:"Oil wells", selectedAttribute: "oil", styles: {}},
         "District revenues": {source: "finder:", title:"District revenues", selectedAttribute: "TOTAL_REC", styles: {}}	
     };
@@ -364,6 +365,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 self.map.showLayer(self.stylelayers["Mines"].guid, false);
                 self.map.showLayer(self.stylelayers["Licenses"].guid, false);
                 self.map.showLayer(self.stylelayers["EITI"].guid,false);
+                self.map.showLayer(self.stylelayers["Company"].guid,false);
                 self.map.showLayer(self.stylelayers["Oil wells"].guid, false);	
                 self.map.showLayer(self.stylelayers["District revenues"].guid, true);
             }
@@ -371,20 +373,30 @@ if(typeof(F1)=='undefined') {F1 = {};}
             else {
                 //District revenues check and Mines check disables
                 //self.map.showLayer(self.stylelayers["District revenues"].guid, false);
-                self.map.clearFilters(self.stylelayers[indicator].guid);
+
                 if(indicator=="Licenses"){
+                    self.map.clearFilters(self.stylelayers[indicator].guid);
                     self.map.addFilter(self.stylelayers[indicator].guid, {expression : s_attr["expression"]});
                     self.map.showLayer(self.stylelayers["EITI"].guid,false);
+                    self.map.showLayer(self.stylelayers["Company"].guid,false);
                     self.map.showLayer(self.stylelayers["Licenses"].guid, true);
                     jq('#layercontrol_company').html("Not Shown");
                     jq('#layercontrol_extractives').html(title);
                 }
                 else if (indicator=="EITI"){
-                    self.map.addFilter(self.stylelayers[indicator].guid, {expression : s_attr["expression"]});
                     self.map.showLayer(self.stylelayers["Licenses"].guid,false);
+                    self.map.showLayer(self.stylelayres["Company"].guid,false);
                     self.map.showLayer(self.stylelayers["EITI"].guid, true);
                     jq('#layercontrol_company').html(title);
                     jq('#layercontrol_extractives').html("Not Shown");
+                }
+                else if (indicator=="Company"){
+                    self.map.showLayer(self.stylelayers["Licenses"].guid,false);
+                    self.map.showLayer(self.stylelayres["EITI"].guid,false);
+                    self.map.showLayer(self.stylelayers["Company"].guid, true);
+                    jq('#layercontrol_company').html(title);
+                    jq('#layercontrol_extractives').html("Not Shown");
+
                 }
                 //self.map.showLayer(self.stylelayers["Mines"].guid, true);
                 //self.map.showLayer(self.stylelayers["Oil wells"].guid, true);
@@ -397,7 +409,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
             //When showing by quantities, use the styling information contained in the layer definition - needs to be separate
             else {
                 // s_attr.icon.selectedAttribute = attribute;
-                log("s_attr",s_attr["expression"])
                 //self.map.clearFilters(self.stylelayers[indicator].guid);
                 //self.map.addFilter(self.stylelayers[indicator].guid, {expression : s_attr["expression"]});
                 self.map.setLayerStyle(self.stylelayers[indicator].guid, s_attr);	
@@ -415,60 +426,31 @@ if(typeof(F1)=='undefined') {F1 = {};}
         {
             var self = this;
             
-            if(layer == "Oil") {
-                if(sector == "Oil wells") {
-                    if((visible !== undefined && visible !== null && visible != true) || jq("#oilwells_control").hasClass("active")) {
-                        self.map.showLayer(self.stylelayers["Oil wells"].guid, false);	
-                        jq("#oilwells_control").removeClass('active').addClass('inactive');
-                    } 
-                    else {
-                        self.map.showLayer(self.stylelayers["Oil wells"].guid, true);	
-                        jq("#oilwells_control").removeClass('inactive').addClass('active');
-                    }
-                } 
-                else if (sector == "Oil fields") {
-                    if((visible !== undefined && visible !== null && visible != true) || jq("#oildeposits_control").hasClass("active")) {
-                        self.map.showLayer(self.stylelayers["Oil fields"].guid, false);	
-                        jq("#oildeposits_control").removeClass('active').addClass('inactive');
-                    } 
-                    else {
-                        self.map.showLayer(self.stylelayers["Oil fields"].guid, true);	
-                        jq("#oildeposits_control").removeClass('inactive').addClass('active');
-                    }
-                }
-            } 
-            else if(layer == "Mines") {
+
+            if(layer == "EITI") {
                 var classname = "#" + sector + "mine_control";
-                if(sector == "all" && (visible === undefined || visible === null)) {
-                    visible = !jq("#allmine_control").attr("checked")
-                }
                 if(visible == true || jq(classname).hasClass("inactive")) {
-                    if(sector == "all") {
-                        jq.each(jq('#mines_sectors li a'), function(el,index) {
-                                jq(el).removeClass('inactive').addClass('active');
-                                })
-                        jq("#allmine_control").attr("checked", "checked")
-                    } 
-                    else {
-                        jq(classname).removeClass('inactive').addClass('active');
-                    }
+                    jq(classname).removeClass('inactive').addClass('active');
                 } 
                 else {
-                    if(sector == "all") {
-                        jq.each(jq('#mines_sectors li a'), function(el,index) {
-                                jq(el).removeClass('active').addClass('inactive');
-                                })
-                        self.map.showLayer(self.stylelayers["Oil wells"].guid, false);
-                        jq("#allmine_control").attr("checked", false)
-                    } 
-                    else {
-                        jq(classname).removeClass('active').addClass('inactive');
-                        jq("#allmine_control").attr("checked", false)
-                        
+                    jq(classname).removeClass('active').addClass('inactive');
                     }
                 }
-                self.showVisibleMines();
+                self.showVisibleMines(layer);
             }
+           
+           if(layer == "Company") {
+                var classname = "#" + sector + "mine_control";
+                if(visible == true || jq(classname).hasClass("inactive")) {
+                    jq(classname).removeClass('inactive').addClass('active');
+                } 
+                else {
+                    jq(classname).removeClass('active').addClass('inactive');
+                    }
+                }
+                self.showVisibleMines(layer);
+            }
+            
             else if(layer == "Mineral deposits") {
                 var classname = "#" + sector + "deposit_control";
                 if(visible == true || jq(classname).hasClass("inactive")) {
@@ -506,15 +488,15 @@ if(typeof(F1)=='undefined') {F1 = {};}
             var layer = "Mines"
             self.map.clearFilters(self.stylelayers[layer].guid);
             self.map.showLayer(self.stylelayers[layer].guid, true);
-            var visibleDeposits = jq.map(jq('#mines_sectors li a'), function(el,index) {
+            var visibleMines = jq.map(jq('#mines_sectors li a'), function(el,index) {
                                          if( jq(el).hasClass('active'))
                                          return jq(el).attr("original-title")
                                          })
-            if(visibleDeposits.length != 0 ){
+            if(visibleMines.length != 0 ){
                 self.map.showLayer(self.stylelayers[layer].guid, true);
                 
                 self.map.addFilter(self.stylelayers[layer].guid,
-                                   {expression: self.complexFilterExpression(visibleDeposits, "mineral ty")});
+                                   {expression: self.complexFilterExpression(visibleMines,1)});
             } else {
                 self.map.showLayer(self.stylelayers[layer].guid, false);
             }
@@ -705,7 +687,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
             var expression = "";
             
             for(var sector=0;sector<sectorFilters.length; sector++) {
-                expression += "$["+sector_attribute+"] == '" + sectorFilters[sector] + "'";
+//                expression += "$["+sector_attribute+"] == '" + sectorFilters[sector] + "'"; GHANA VERSION
+                expression += "$["+sectorFilters[sector]+"] == " + sector_attribute;
                 if(sector != sectorFilters.length-1)
                     expression += " OR ";
             }
@@ -1256,7 +1239,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
     getLayers: function() 
         {
             var self = this;
-            var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Number of Physicians", "Number of Households", "Unemployment", "Mines", "Licenses","EITI","Oil wells", "Oil fields", "District revenues", "Mineral deposits", "No Data"];
+            var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Number of Physicians", "Number of Households", "Unemployment", "Soums", "Mines", "Licenses","EITI","Company","Oil wells", "Oil fields", "District revenues", "Mineral deposits", "No Data"];
             
             possibleLayers = self.map.getLayers();
             
@@ -1265,7 +1248,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
                     index = Object.include(findlayers, possibleLayers[layer].title);
                     if(index !== undefined && index !== null){
                     self.stylelayers[findlayers[index]] = {guid: possibleLayers[layer].guid, order: possibleLayers[layer].order, source: possibleLayers[layer].source, sharedLayer: false};
-                    if(Object.include(["Infant Mortality", "Population", "Poverty", "Number of Physicians", "Number of Households", "Unemployment"], possibleLayers[layer].title)) {
+                    if(Object.include(["Infant Mortality", "Population", "Poverty", "Number of Physicians", "Number of Households", "Unemployment","Soums"], possibleLayers[layer].title)) {
                     F1.WorldBank.indicators[possibleLayers[layer].title].styles.fill.selectedAttribute = possibleLayers[layer].styles.fill.selectedAttribute;
                     }
                     findlayers.splice(index,1);
