@@ -34,7 +34,7 @@
   },
   
   "EITI": {
-   infoWindowFilter:{"title": "Licenses","subtitle":"HELLO"}
+   infoWindowFilter:{"title": "Licenses","subtitle":"HELLO"},
    "National payments":  {"infoWindowFilter": {"subtitle": "Sum of payments to central budget: $[centralpaysum]"},"icon": {"opacity": 0.75,"size": 1,"symbol": "propCircle","propSize": null,"classificationType": "Quantile","gradSize": 1,"dropShadow": true,"selectedAttribute": "centralpaysum","categories": 5,"classificationNumClasses": 6, "color": 542100},"type": "GRADUATED","stroke": {"alpha": 1,"weight": 1,"color": 137011},"fill": {"opacity": 0.75,"color": 542100},"expression":"$[centralpaysum] > 0"},
   "Local payments":  {"infoWindowFilter": {"subtitle": "Sum of payments to local budgets: $[localpaysum]"},"icon": {"opacity": 0.75,"size": 1,"symbol": "propCircle","propSize": null,"classificationType": "Quantile","gradSize": 1,"dropShadow": true,"selectedAttribute": "localpaysum","categories": 5,"color": 8160950,"classificationNumClasses": 3},"type": "GRADUATED","stroke": {"alpha": 1,"weight": 1,"color": 137011},"fill": {"opacity": 0.75,"color": 8160950},"expression":"$[localpaysum] > 0"},
   "Total payments":  {"infoWindowFilter": {"subtitle": "Sum of all payments: $[totalpaysum]"},"icon": {"opacity": 0.75,"size": 1,"symbol": "propCircle","propSize": null,"classificationType": "Quantile","gradSize": 1,"dropShadow": true,"selectedAttribute": "totalpaysum","categories": 5,"color": 8160950,"classificationNumClasses": 3},"type": "GRADUATED","stroke": {"alpha": 1,"weight": 1,"color": 137011},"fill": {"opacity": 0.75,"color": 8160950},"expression":"$[totalpaysum] > 0"}
