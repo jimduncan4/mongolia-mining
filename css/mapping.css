@@ -304,7 +304,7 @@ ul.links li, ul.links li a{
     padding-top: 6px;
     white-space: normal;
 }
-#map-content-hdr2,#map-content-hdr3,#map-content-hdr4{
+#map-content-hdr2,#map-content-hdr3{
 	background: url('img/bg_hdr2.png') repeat-x;
 	clear: both;
 	height: 47px;
@@ -313,7 +313,7 @@ ul.links li, ul.links li a{
 	width: 820px;
 	z-index: 10;
 }
-#map-content-hdr3,#map-content-hdr4 { margin-top:45px; z-index: 9;}
+#map-content-hdr3, { margin-top:45px; z-index: 9;}
 
 .ie7 #map-content-hdr2{
 	margin-top: -5px;	
