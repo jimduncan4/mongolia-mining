@@ -310,7 +310,7 @@ ul.links li, ul.links li a{
 	height: 47px;
 	margin: 0;
 	position: absolute;
-	width: 820px;
+	width: inherit;
 	z-index: 10;
 }
 #map-content-hdr3 { margin-top:45px; z-index: 9;}
