@@ -1245,7 +1245,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
                     index = Object.include(findlayers, possibleLayers[layer].title);
                     if(index !== undefined && index !== null){
                     self.stylelayers[findlayers[index]] = {guid: possibleLayers[layer].guid, order: possibleLayers[layer].order, source: possibleLayers[layer].source, sharedLayer: false};
-                    if(Object.include(["Infant Mortality", "Population", "Poverty", "Number of Physicians", "Number of Households", "Unemployment","Soums"], possibleLayers[layer].title)) {
+                    if(Object.include(["Infant Mortality", "Population", "Poverty", "Number of Physicians", "Number of Households", "Unemployment"], possibleLayers[layer].title)) {
                     F1.WorldBank.indicators[possibleLayers[layer].title].styles.fill.selectedAttribute = possibleLayers[layer].styles.fill.selectedAttribute;
                     }
                     findlayers.splice(index,1);
