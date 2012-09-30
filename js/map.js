@@ -125,6 +125,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
         "Mineral deposits": {source: "finder:", title:"Mineral deposits", selectedAttribute: "mineral", styles: {}},
         "Mines": {source: "finder:", title:"Mines", selectedAttribute: "mines", styles: {}},
         "Licenses":{source: "finder:", title:"Licenses", selectedAttribute:"licenses",styles: {}},
+        "EITI":{source: "finder:", title:"EITI", selectedAttribute:"eiti",styles: {}},
         "Oil wells": {source: "finder:", title:"Oil wells", selectedAttribute: "oil", styles: {}},
         "District revenues": {source: "finder:", title:"District revenues", selectedAttribute: "TOTAL_REC", styles: {}}	
     };
@@ -361,6 +362,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             if(indicator == "District revenues") {
                 self.map.showLayer(self.stylelayers["Mines"].guid, false);
                 self.map.showLayer(self.stylelayers["Licenses"].guid, false);
+                self.map.showLayer(self.stylelayers["EITI"].guid,false);
                 self.map.showLayer(self.stylelayers["Oil wells"].guid, false);	
                 self.map.showLayer(self.stylelayers["District revenues"].guid, true);
             }
@@ -369,8 +371,20 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 //District revenues check and Mines check disables
                 //self.map.showLayer(self.stylelayers["District revenues"].guid, false);
                 self.map.clearFilters(self.stylelayers[indicator].guid);
-                self.map.addFilter(self.stylelayers[indicator].guid, {expression : s_attr["expression"]});
-                self.map.showLayer(self.stylelayers["Licenses"].guid, true);
+                if(indicator=="Licenses"){
+                    self.map.addFilter(self.stylelayers[indicator].guid, {expression : s_attr["expression"]});
+                    self.map.showLayer(self.stylelayers["EITI"].guid,false);
+                    self.map.showLayer(self.stylelayers["Licenses"].guid, true);
+                    jq('#layercontrol_company').html("Not Shown");
+                    jq('#layercontrol_extractives').html(title);
+                }
+                else if (indicator=="EITI"){
+                    self.map.addFilter(self.stylelayers[indicator].guid, {expression : s_attr["expression"]});
+                    self.map.showLayer(self.stylelayers["Licenses"].guid,false);
+                    self.map.showLayer(self.stylelayers["EITI"].guid, true);
+                    jq('#layercontrol_company').html(title);
+                    jq('#layercontrol_extractives').html("Not Shown");
+                }
                 //self.map.showLayer(self.stylelayers["Mines"].guid, true);
                 //self.map.showLayer(self.stylelayers["Oil wells"].guid, true);
             }
@@ -392,7 +406,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
                                         title: F1.WorldBank.extractives[indicator]["infoWindowFilter"]["title"],
                                         subtitle: s_attr["infoWindowFilter"]["subtitle"], tabs: F1.WorldBank.extractives[indicator]["infoWindowFilter"]["tabs"]});
             
-            jq('#layercontrol_extractives').html(title);
+            
             return false;
         },
         
@@ -1241,7 +1255,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
     getLayers: function() 
         {
             var self = this;
-            var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Number of Physicians", "Number of Households", "Unemployment", "Mines", "Licenses","Oil wells", "Oil fields", "District revenues", "Mineral deposits", "No Data"];
+            var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Number of Physicians", "Number of Households", "Unemployment", "Mines", "Licenses","EITI","Oil wells", "Oil fields", "District revenues", "Mineral deposits", "No Data"];
             
             possibleLayers = self.map.getLayers();
             
