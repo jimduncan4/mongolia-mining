@@ -122,7 +122,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
         "Unemployment": {source: "finder:", title:"Unemployment", subtitle: "", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "unemployment"}}, infosubtitle: "The percentage of the regional population not employed in the 12 months prior to the survey", table: null, description: "The number of people in each aimag not employed in the first half of 2012. Source: <a href='http://www.nso.mn/v3/index2.php?page=free_access' target='_new'>National Statistical Office of Mongolia</a>."},	
         "Number of Physicians": {source: "finder:", title:"Number of Physicians", subtitle: "", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [15456706, 13744031, 10782317, 8151635, 4863020], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "physnum"}}, infosubtitle: "The number of physicians in each aimag", table: null, description: "The number of physicians in each aimag in 2010. \nSource: <a href='http://www.nso.mn/v3/index2.php?page=free_access' target='_new'>National Statistical Office of Mongolia</a>."},	
         "Number of Households": {source: "finder:", title:"Number of Households", subtitle: "", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [5313667, 8608676, 12619965, 14924738, 16573399], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "housenum"}}, infosubtitle: "The number of households in each aimag", table: null, description: "The number of households in each aimag in 2010. \nSource: <a href='http://www.nso.mn/v3/index2.php?page=free_access' target='_new'>National Statistical Office of Mongolia</a>."},	
-        "Soum Boundaries":{source: "finder:", title:"Soum Boundaries", selectedAttribute:"soumnameen",subtitle: "",styles: {type: "PRIMITIVE",stroke: {color: 0x222222, weight: 1, opacity: 0.75},fill:{color:[0xCCCC66],opacity: 0.75}},infosubtitle: "%[soumnameen] Soum", table: null, description: "Soum boundaries provided by the <a href='http://www.icc.mn/' target='_new'>Environmental Information Center</a>."},
+        "Soum Boundaries":{source: "finder:", title:"Soum Boundaries", selectedAttribute:"soumnameen",subtitle: "",styles: {type: "PRIMITIVE",stroke: {color: 0x222222, weight: 1, opacity: 0.75},fill:{color:[0xFEE5D9],opacity: 0.75}},infosubtitle: "%[soumnameen] Soum", table: null, description: "Soum boundaries provided by the <a href='http://www.icc.mn/' target='_new'>Environmental Information Center</a>."},
         "Mineral deposits": {source: "finder:", title:"Mineral deposits", selectedAttribute: "mineral", styles: {}},
         "Mines": {source: "finder:", title:"Mines", selectedAttribute: "mines", styles: {}},
         "Licenses":{source: "finder:", title:"Licenses", selectedAttribute:"licenses",styles: {}},
@@ -725,13 +725,11 @@ if(typeof(F1)=='undefined') {F1 = {};}
             else {
                 jq('#layercontrol_indicators').html(indicator);
                 
-                var style = F1.WorldBank.indicators[indicator].styles;
-                if (indicator!="Soum Boundaries") {
-                    style.source = self.stylelayers[indicator].source;
-                    if (self.current_indicator="Soum Boundaries"){
-                        self.map.showLayer(self.stylelayers[indicator].guid,false);
-                    }
+               style.source = self.stylelayers[indicator].source;
+               if (self.current_indicator="Soum Boundaries"){
+                    self.map.showLayer(self.stylelayers[indicator].guid,false);
                 }
+            }
                 
                 if(self.stylelayers[indicator].sharedLayer)
                     self.map.setLayerStyle(self.stylelayers[indicator].guid, style);
