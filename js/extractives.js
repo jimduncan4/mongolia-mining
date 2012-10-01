@@ -42,7 +42,7 @@
  
  "Company": {
    infoWindowFilter:{"title": "$[company_name]","subtitle":""},
-   "Location":  {"infoWindowFilter": {"subtitle": "Total EITI 2010 payments: MNT(000) $[totalpaysum]"},"styles": {"type": "POINT","icon": {"color": 0x222222, "weight": 1, "opacity": 0.75},"fill":{"color":[0xCCCC66],"opacity": 0.75}}},
+   "Location":  {"infoWindowFilter": {"subtitle": "Total EITI 2010 payments: MNT(000) $[totalpaysum]"},"styles": {"type": "PRIMITIVE","stroke": {"color": 0x222222, "weight": 1, "opacity": 0.75},"fill":{"color":[0xCCCC66],"opacity": 0.75}}},
   },
  
    "District revenues": {
