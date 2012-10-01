@@ -386,7 +386,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 else if (indicator=="EITI"){
                     self.map.showLayer(self.stylelayers["Licenses"].guid,false);
                     self.map.showLayer(self.stylelayers["Company"].guid,false);
-                   // self.map.showLayer(self.stylelayers["EITI"].guid, true);
+                    self.map.showLayer(self.stylelayers["EITI"].guid, true);
                     self.showVisibleMines(indicator);
                     jq('#layercontrol_company').html(title);
                     jq('#layercontrol_extractives').html("Not Shown");
@@ -394,7 +394,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 else if (indicator=="Company"){
                     self.map.showLayer(self.stylelayers["Licenses"].guid,false);
                     self.map.showLayer(self.stylelayers["EITI"].guid,false);
-                    //self.map.showLayer(self.stylelayers["Company"].guid, true);
+                    self.map.showLayer(self.stylelayers["Company"].guid, true);
                     self.showVisibleMines(layer)
                     jq('#layercontrol_company').html(title);
                     jq('#layercontrol_extractives').html("Not Shown");
