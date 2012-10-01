@@ -387,7 +387,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
                     self.map.showLayer(self.stylelayers["Licenses"].guid,false);
                     self.map.showLayer(self.stylelayers["Company"].guid,false);
                     self.map.showLayer(self.stylelayers["EITI"].guid, true);
-                    self.showVisibleMines(indicator);
+                    self.showVisibleMines("Company");
+                    self.showVisibleMines("EITI");
                     jq('#layercontrol_company').html(title);
                     jq('#layercontrol_extractives').html("Not Shown");
                 }
@@ -395,7 +396,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
                     self.map.showLayer(self.stylelayers["Licenses"].guid,false);
                     self.map.showLayer(self.stylelayers["EITI"].guid,false);
                     self.map.showLayer(self.stylelayers["Company"].guid, true);
-                    self.showVisibleMines(layer)
+                    self.showVisibleMines("Company")
+                    self.showVisibleMines("EITI")
                     jq('#layercontrol_company').html(title);
                     jq('#layercontrol_extractives').html("Not Shown");
 
@@ -429,7 +431,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             var self = this;
             
 
-            if(layer == "EITI") {
+            if(layer == "EITI" || layer == "Company") {
                 var classname = "#" + sector + "mine_control";
                 if(visible == true || jq(classname).hasClass("inactive")) {
                     jq(classname).removeClass('inactive').addClass('active');
@@ -437,20 +439,10 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 else {
                     jq(classname).removeClass('active').addClass('inactive');
                 }
-                self.showVisibleMines(layer);
+                self.showVisibleMines("Company")
+                self.showVisibleMines("EITI");
             }
            
-           if(layer == "Company") {
-                var classname = "#" + sector + "mine_control";
-                if(visible == true || jq(classname).hasClass("inactive")) {
-                    jq(classname).removeClass('inactive').addClass('active');
-                } 
-                else {
-                    jq(classname).removeClass('active').addClass('inactive');
-                }
-                self.showVisibleMines(layer);
-            }
-            
             else if(layer == "Mineral deposits") {
                 var classname = "#" + sector + "deposit_control";
                 if(visible == true || jq(classname).hasClass("inactive")) {
