@@ -725,10 +725,13 @@ if(typeof(F1)=='undefined') {F1 = {};}
             else {
                 jq('#layercontrol_indicators').html(indicator);
                 
-               style.source = self.stylelayers[indicator].source;
-               if (self.current_indicator="Soum Boundaries"){
-                    self.map.showLayer(self.stylelayers[indicator].guid,false);
+                if (indicator!="Soum Boundaries"){
+                    style.source = self.stylelayers[indicator].source;
+                    if (self.current_indicator="Soum Boundaries"){
+                        self.map.showLayer(self.stylelayers[indicator].guid,false);
+                    } 
                 }
+              
                         
                 if(self.stylelayers[indicator].sharedLayer)
                     self.map.setLayerStyle(self.stylelayers[indicator].guid, style);
