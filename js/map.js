@@ -729,8 +729,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
                if (self.current_indicator="Soum Boundaries"){
                     self.map.showLayer(self.stylelayers[indicator].guid,false);
                 }
-            }
-                
+                        
                 if(self.stylelayers[indicator].sharedLayer)
                     self.map.setLayerStyle(self.stylelayers[indicator].guid, style);
                 
