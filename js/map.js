@@ -726,7 +726,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 jq('#layercontrol_indicators').html(indicator);
                 
                 var style = F1.WorldBank.indicators[indicator].styles;
-                style.source = self.stylelayers[indicator].source;
+                if (indicator!="Soum Boundaries") {
+                    style.source = self.stylelayers[indicator].source;
+                }
                 
                 if(self.stylelayers[indicator].sharedLayer)
                     self.map.setLayerStyle(self.stylelayers[indicator].guid, style);
