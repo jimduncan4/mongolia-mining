@@ -439,8 +439,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 else {
                     jq(classname).removeClass('active').addClass('inactive');
                 }
-                self.showVisibleMines("Company")
+                self.showVisibleMines("Company");
                 self.showVisibleMines("EITI");
+                self.map.showLayer(self.stylelayers[layer].guid, true);
             }
            
             else if(layer == "Mineral deposits") {
