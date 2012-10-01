@@ -493,7 +493,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 self.map.showLayer(self.stylelayers[layer].guid, true);
                 
                 self.map.addFilter(self.stylelayers[layer].guid,
-                                   {expression: self.complexFilterExpression(visibleMines,1)});
+                                   {expression: self.complexFilterExpression(visibleMines,"Yes")});
             } else {
                 self.map.showLayer(self.stylelayers[layer].guid, false);
             }
@@ -685,7 +685,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             
             for(var sector=0;sector<sectorFilters.length; sector++) {
 //                expression += "$["+sector_attribute+"] == '" + sectorFilters[sector] + "'"; GHANA VERSION
-                expression += "$["+sectorFilters[sector]+"] == " + sector_attribute;
+                expression += "$["+sectorFilters[sector]+"] == '" + sector_attribute+"'";
                 if(sector != sectorFilters.length-1)
                     expression += " OR ";
             }
