@@ -1261,20 +1261,13 @@ if(typeof(F1)=='undefined') {F1 = {};}
                         });
             }
             
-            var downloads = {"Project Locations": "csv",
-                "Project Counts": "csv",
+            var downloads = {//"Project Locations": "csv",
+                "Licenses": "csv",
+                "EITI": "csv",
+                "Company": "shapefile",
                 "Indicators": "shapefile",
-                "Population": "shapefile",
-                "Mineral deposits": "shapefile",
-                "IFC projects": "csv",
-                "World Bank projects": "csv",
-                "Mines": "csv",
-                "District revenues": "csv",
-                "Oil wells": "csv",
-                "Oil fields": "shapefile",
-                "Oil blocks": "shapefile",
-                "Population density": "shapefile",
-                "Regional socioeconomic indicators": "shapefile"};
+                "Soum Boundaries": "shapefile"
+                };
             
             jq("#data_links").html("")
             jq.each(downloads, function(index,download) {
