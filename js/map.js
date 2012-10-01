@@ -725,9 +725,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
             else {
                 jq('#layercontrol_indicators').html(indicator);
                 
-                if (indicator!="Soum Boundaries"){
+                if (indicator !== "Soum Boundaries"){
                     style.source = self.stylelayers[indicator].source;
-                    if (self.current_indicator="Soum Boundaries"){
+                    if (self.current_indicator == "Soum Boundaries"){
                         self.map.showLayer(self.stylelayers[indicator].guid,false);
                     } 
                 }
