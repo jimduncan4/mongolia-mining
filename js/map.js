@@ -1100,12 +1100,12 @@ if(typeof(F1)=='undefined') {F1 = {};}
                     table += tmpl(table_templates.mine, mine);
                     });
             table += "</tbody></table>"
-            jq("#map-table").append(table);
+//TEMPORARY            jq("#map-table").append(table);
             
             jq("#project-info tr").live("click", function() {
                                         self.highlightMine("Company name", jq(this).attr("data-project-id"));
                                         });
-            
+            jq("#map-table").append("<h1><span>TABLE COMING SOON</span></h1>")
         },
         
     regionFundingBars: function() 
