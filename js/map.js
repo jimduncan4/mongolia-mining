@@ -385,14 +385,14 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 }
                 else if (indicator=="EITI"){
                     self.map.showLayer(self.stylelayers["Licenses"].guid,false);
-                    self.map.showLayer(self.stylelayres["Company"].guid,false);
+                    self.map.showLayer(self.stylelayers["Company"].guid,false);
                     self.map.showLayer(self.stylelayers["EITI"].guid, true);
                     jq('#layercontrol_company').html(title);
                     jq('#layercontrol_extractives').html("Not Shown");
                 }
                 else if (indicator=="Company"){
                     self.map.showLayer(self.stylelayers["Licenses"].guid,false);
-                    self.map.showLayer(self.stylelayres["EITI"].guid,false);
+                    self.map.showLayer(self.stylelayers["EITI"].guid,false);
                     self.map.showLayer(self.stylelayers["Company"].guid, true);
                     jq('#layercontrol_company').html(title);
                     jq('#layercontrol_extractives').html("Not Shown");
