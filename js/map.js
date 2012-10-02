@@ -427,7 +427,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
     toggleExtractive: function(layer,offlayer,sector,visible) 
         {
             var self = this;
-            
+            var layervisible=self.map.getLayers().layer.visible;
 
             if(layer == "EITI" || layer == "Company") {
                 var classname = "#" + sector + "mine_control";
@@ -437,7 +437,12 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 else {
                     jq(classname).removeClass('active').addClass('inactive');
                 }
-                self.showVisibleMines(layer, offlayer);
+                if(layervisible == 1){
+                    self.showVisibleMines(layer, offlayer);
+                }
+                else{
+                    self.showVisibleMines(offlayer, layer);
+                }
             }
            
             else if(layer == "Mineral deposits") {
