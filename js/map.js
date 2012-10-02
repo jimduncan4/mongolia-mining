@@ -441,7 +441,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 if(layervisible[self.stylelayers[layer].order].visible){
                     self.showVisibleMines(layer, offlayer);
                 }
-                else{
+                else if(layervisible[self.stylelayers[offlayer].order].visible){
                     self.showVisibleMines(offlayer, layer);
                 }
             }
