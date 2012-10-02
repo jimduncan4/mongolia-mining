@@ -24,8 +24,8 @@
   "Location": {"type":"POINT","icon":{"size":.75},"attribute":"Mineral type","categories":{"Gold": iconhost+"gold-14.png","Manganese": iconhost+"manganese-14.png","Bauxite": iconhost+"bauxite-14.png","Other": iconhost+"other-14.png"},"infoWindowFilter": {"subtitle":"$[Mineral type]"}}
   },
   "Licenses": {
-   infoWindowFilter:{"title": "Licences","subtitle": "HELLO"},
-  "Production percent": {"infoWindowFilter": {"subtitle": "Percent of soum under production license: $[prod_pct]%"},"icon": {"opacity": 0.75,"size": 1,"symbol": "propCircle","propSize": null,"classificationType": "Quantile","gradSize": 1,"dropShadow": true,"selectedAttribute": "prod_pct","categories": 5, "classificationNumClasses": 6, "color": 16687913},"type": "GRADUATED","stroke": {"alpha": 1,"weight": 1,"color": 12611072},"fill": {"opacity": 0.75,"color": 16687913}, "expression":"$[prod_pct] > 0"},
+   infoWindowFilter:{"title": "$[soumnameen] Soum","subtitle": ""},
+  "Production percent": {"infoWindowFilter": {"subtitle": "Percent of soum under production license: $[prod_pct]%"},"icon": {"opacity": 0.75,"size": 1,"symbol": "propCircle","propSize": null,"classificationType": "Quantile","gradSize": 0.5,"dropShadow": true,"selectedAttribute": "prod_pct","categories": 7, "classificationNumClasses": 8, "color": 16687913},"type": "GRADUATED","stroke": {"alpha": 1,"weight": 1,"color": 12611072},"fill": {"opacity": 0.75,"color": 16687913}, "expression":"$[prod_pct] > 0"},
   "Production count": {"infoWindowFilter": {"subtitle": "Number of production licenses in soum: $[prod_count]"},"icon": {"opacity": 0.75,"size": 1,"symbol": "propCircle","propSize": null,"classificationType": "Quantile","gradSize": 1,"dropShadow": true,"selectedAttribute": "prod_count","categories": 5,"color": 16709541},"type": "GRADUATED","stroke": {"alpha": 1,"weight": 1,"color": 16687913},"fill": {"opacity": 0.75,"color": 16709541}, "expression":"$[prod_count] > 0"},
   "Exploration percent": {"infoWindowFilter": {"subtitle": "Percent of soum under exploration license: $[exp_pct]%"}, "icon": {"opacity": 0.75,"size": 1,"symbol": "propCircle","propSize": null,"classificationType": "Quantile","gradSize": 1,"dropShadow": true,"selectedAttribute": "exp_pct","categories": 5,"color": 16698989},"type": "GRADUATED","stroke": {"alpha": 1,"weight": 1,"color": 16698989},"fill": {"opacity": 0.75,"color": 16698989}, "expression":"$[exp_pct] > 0"},  
   "Exploration count": {"infoWindowFilter": {"subtitle": "Number of exploration licenses in soum: $[exp_count]"},"icon": {"opacity": 0.75,"size": 1,"symbol": "propCircle","propSize": null,"classificationType": "Quantile","gradSize": 1,"dropShadow": true,"selectedAttribute": "exp_count","categories": 5,"color": 16698989},"type": "GRADUATED","stroke": {"alpha": 1,"weight": 1,"color": 16698989},"fill": {"opacity": 0.75,"color": 16698989},"expression":"$[exp_count] > 0"},
@@ -34,7 +34,7 @@
   },
   
   "EITI": {
-   infoWindowFilter:{"title": "Licenses","subtitle":"HELLO"},
+   infoWindowFilter:{"title": "$[soumnameen] Soum, $[aimagnameen] Aimag","subtitle":""},
    "National payments":  {"infoWindowFilter": {"subtitle": "Sum of payments to central budget: MNT(000) $[centralpaysum]"},"icon": {"opacity": 0.75,"size": 1,"symbol": "propCircle","propSize": null,"classificationType": "Quantile","gradSize": 1,"dropShadow": true,"selectedAttribute": "centralpaysum","categories": 5,"classificationNumClasses": 6, "color": 542100},"type": "GRADUATED","stroke": {"alpha": 1,"weight": 1,"color": 137011},"fill": {"opacity": 0.75,"color": 542100},"expression":"$[centralpaysum] > 0"},
   "Local payments":  {"infoWindowFilter": {"subtitle": "Sum of payments to local budgets: MNT(000) $[localpaysum]"},"icon": {"opacity": 0.75,"size": 1,"symbol": "propCircle","propSize": null,"classificationType": "Quantile","gradSize": 1,"dropShadow": true,"selectedAttribute": "localpaysum","categories": 5,"color": 8160950,"classificationNumClasses": 3},"type": "GRADUATED","stroke": {"alpha": 1,"weight": 1,"color": 137011},"fill": {"opacity": 0.75,"color": 8160950},"expression":"$[localpaysum] > 0"},
   "Total payments":  {"infoWindowFilter": {"subtitle": "Sum of all payments: MNT(000) $[totalpaysum]"},"icon": {"opacity": 0.75,"size": 1,"symbol": "propCircle","propSize": null,"classificationType": "Quantile","gradSize": 1,"dropShadow": true,"selectedAttribute": "totalpaysum","categories": 5,"color": 8160950,"classificationNumClasses": 3},"type": "GRADUATED","stroke": {"alpha": 1,"weight": 1,"color": 137011},"fill": {"opacity": 0.75,"color": 8160950},"expression":"$[totalpaysum] > 0"}
@@ -42,7 +42,7 @@
  
  "Company": {
    infoWindowFilter:{"title": "$[company_name]","subtitle":""},
-   "Location":  {"infoWindowFilter": {"subtitle": "Total EITI 2010 payments: MNT(000) $[totalpaysum]"},"styles": {"type": "PRIMITIVE","stroke": {"color": 0x222222, "weight": 1, "opacity": 0.75},"fill":{"color":[0xCCCC66],"opacity": 0.75}}},
+   "Location":  {"infoWindowFilter": {"subtitle": "Total EITI 2010 payments: MNT(000) $[totalpay]"},"styles": {"type": "PRIMITIVE","stroke": {"color": 0x222222, "weight": 1, "opacity": 0.75},"fill":{"color":[0xCCCC66],"opacity": 0.75}}},
   },
  
    "District revenues": {
