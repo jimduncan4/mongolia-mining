@@ -37,7 +37,7 @@ function initializeEvents() {
     jq.each(jq('#mines_sectors li a'), function(index,el) {
        jq(el).tipsy({gravity:  jq.fn.tipsy.autoNS});
        jq(el).click(function() {
-           return wb.toggleExtractive("Company","EITI" jq(this).attr("original-title"))
+           return wb.toggleExtractive("Company","EITI", jq(this).attr("original-title"))
        });
     });
     jq.each(jq('#ore_sectors li a'), function(index,el) {
