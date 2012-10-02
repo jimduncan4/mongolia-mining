@@ -88,12 +88,13 @@ MOVING WB LOGO -->
         </div><!--#header//-->
         <div id="main-wrap" style="">
         
-        <div>    <h2>About the Extractive Industries Map of Mongolia</h2>
+        <div>    <h1>About the Extractive Industries Map of Mongolia</h1>
 
 <p>The Extractive Industries Map of Mongolia is an online, publicly-accessible, interactive mapping application focused on the extractive industries of oil, gas and mining. With this tool, users can map an array of data about the sector, including the statistics about mining and petroleum licenses, company activities, socioeconomic indicators such as unemployment and infant mortality rates, government revenues, and civil society activities. The goal is to create a tool that advocates and policy-makers can use to understand issues in the mining and oil sectors and advocate for solutions. The platform was piloted in Ghana and has been scaled out to Mongolia based on new demands there. By allowing users to create their own maps of this information, the relationships between mining, socioeconomic factors and other related data can be better explored and understood than through the sole use of tables and text, and provides a central space through which a variety of information can be accesssed. </p>
+
 <p><a href="http://jimduncan4.github.com/mining-mongolia/">Click here to go to the map page.</a></p>
 
-<h4>Data Sources</h4>
+<h1>Data Sources</h1>
 <p>Various data sources were used to create the extractive industries map. These individual sources and the way the data were processed to create the mapped information is described below. Wherever possible, links to the original sources are provided. As additional updates and additions are made, they will be recorded here as well.</p>
 <p><strong>Data Categories:</strong></p>
 
@@ -111,55 +112,63 @@ MOVING WB LOGO -->
 
 <a id="license"></a>
 
-<h3>Mineral Exploration and Production Licenses</h3>
+<h2>Mineral Exploration and Production Licenses</h2>
 
 <p>Information about license granted for mineral exploration and production in Mongolia were extracted from spatial data provided by the <a href="http://www.mram.gov.mn/" target='_new'>Mineral Resources Authority of Mongolia</a>. Data were provided in spatial format for both <i>produciton licenses</i> and <i>exploration licenses</i>. These datasets were merged to create a dataset of <i>all licenses</i>. These three datasets were then intersected with soum boundaries and summary statistics were generated from the resulting overlaps. The data accuracy is limited by the precision of the soum boundaries and the license boundaries, which should be taken into account when assessing the results. The data was current as of May 2012.</p>
 
-<h2>Percent of soum area covered by licenses</h2>
+<h3>Percent of soum area covered by licenses</h3>
 <p>Area was calculated on each of the three intersected license datasets after projecting to a modified Albers Equal Area Conic projection and this calculated area was then compared to the total area of the soum. The result is reported as a percent of soum area, and users can see the total area in hectares in the underlying data.</p>
 
-<h2>Percent of soum area covered by licenses</h2>
+<h3>Percent of soum area covered by licenses</h3>
 <p>A spatial join was used with each license dataset to count the number of licenses overlapping each soum. The result is reported as the number of licenses in a soum.</p>
 
 <a id="eiti"></a>
+<h2>Extractive Industries Transparency Initiative Data</h2>
 <p>The <a href="http://eiti.org/" target='_new'>Extractive Industries Transparency Initiative </a> (EITI) reconciles payments and receipts between governments and companies. The 2010 report by <a href="http://eitimongolia.mn/index.php" target='_new'>EITI Mongolia</a> was the source of the following information for 150 companies: total payments to the central budget by company, total payments to local budgets by company, and resources being extracted by each company. Additional reports are available since 2006, and additional reports will be coming out soon.</p>
 <p>In addition, where available investment agreements and other supporting documents for companies were collected from company websites and other sources.</p>
+<p>Data on companies was extracted from the reports. The soums the companies worked in were identified, and joined to the company data. To calculate total payments for all companies in each soum, it was necessary to restrict the companies for consideration. First, all exploration companies were excluded, as their operations covered large areas, such as whole aimags. Next, any companies working in more than one soum had to be excluded, as it was impossible to tell how much of the total payments was generated in each separate soum. This means the soum-level statistics of EITI data represent only those companies operating in one soum. However, when displaying the soums of operations for companies, all soums in which a company worked in <i>production</i> are shown. </p>
 
 <a id="indicators"></a>
 
-<h3>Development Indicators</h3>
+<h2>Development Indicators</h2>
 <p>Socioeconomic indicators were gathered from National Statistics Office of Mongolia reports. Where possible, the latest data was gathered from quarterly reports, and otherwise come from the most recent yearly release of data.</p>
 
-<h2>Population</h2>
+<h3>Population</h3>
 <p>The number of people in each aimag in 2010 is reported for each aimag. The data comes from yearly statistics released for 2010 by the <a href='http://www.nso.mn/v3/index2.php?page=free_access' target='_new'>National Statistical Office of Mongolia</a>.</p>
 
-<h2>Unemployment</h2>
+<h3>Unemployment</h3>
 
 <p>Unemployment is represented as the number of people in each aimag not employed in the first half of 2012. Data was gathered from the <a href="http://web.nso.mn/download_data.php?type=bulletin&year=2012&file=bulletin_2012_aug.pdf" target='_new'>August Bulletin</a> available from the website of the <a href='http://www.nso.mn/v3/index2.php?page=free_access' target='_new'>National Statistical Office of Mongolia</a>.</p>
 
-<h2>Number of Households</h2>
+<h3>Number of Households</h3>
 <p>The number of households in each aimag in 2010 were gathered from survey data. This data is available to download from the <a href='http://www.nso.mn/v3/index2.php?page=free_access' target='_new'>National Statistical Office of Mongolia</a>.</p>
 
-<h2>Infant Mortality</h2>
+<h3>Infant Mortality</h3>
 
 <p>Data were reported as the number of infant deaths per 1,000 live births in each aimag, and represents statistics from the second quarter of 2012. Data was gathered from the <a href="http://web.nso.mn/download_data.php?type=bulletin&year=2012&file=bulletin_2012_aug.pdf" target='_new'>August Bulletin</a> available from the website of the <a href='http://www.nso.mn/v3/index2.php?page=free_access' target='_new'>National Statistical Office of Mongolia</a>.
 
-</p><h2>Number of Physicians</h2>
+</p>
+
+<h3>Number of Physicians</h3>
 <p>The number of physicians present in each aimag was determined by survey for year 2010. This data is available to download from the <a href='http://www.nso.mn/v3/index2.php?page=free_access' target='_new'>National Statistical Office of Mongolia</a>.</p>
 
 
 <a id="boundary"></a>
 
-<h3>Geographic Boundaries</h3>
+<h2>Geographic Boundaries</h2>
 
 <p>The maps displayed on the World Bank web site are for reference only. The boundaries, colors, denominations and any other information shown on these maps do not imply, on the part of the World Bank Group, any judgment on the legal status of any territory, or any endorsement or acceptance of such boundaries.
 
 </p>
 
-<h2>Soum and aimag boundaries for Mongolia</h2>
+<h3>Soum and aimag boundaries for Mongolia</h3>
 
-<p>Soum and aimag boundaries were obtained from the <a href='http://www.icc.mn/' target='_new'>Environmental Information Center</a>, an agency within the <a href="http://www.mne.mn/" target='_new'>Mongolia Ministry of Nature, Environment and Green Development</a>. There are some deviations from other boundaries, but to the best of our knowledge, these are the most accurate official boundaries publicly available as of now. please see disclaimer above.</p>
+<p>Soum and aimag boundaries were obtained from the <a href='http://www.icc.mn/' target='_new'>Environmental Information Center</a>, an agency within the <a href="http://www.mne.mn/" target='_new'>Mongolia Ministry of Nature, Environment and Green Development</a>. There are some deviations from other boundaries, but to the best of our knowledge, these are the most accurate official boundaries publicly available as of now. please see disclaimer below.</p>
 
+
+<a id="disclaimer"></a>
+<h2>Disclaimer</h2>
+<p>In addition to the disclaimer on boundary representations presented above, this map is constructed of best available data and it was not possible to verify the precise locations of boundaries of licenses and other datasets. This has implications both for the spatial analysis and the illustration of boundaries and locations. As a result, this platform is intended for general informational and reference uses only, and does not represent the official status of licenses or statistics for the country of Mongolia.</p>
 </div>
 
     
