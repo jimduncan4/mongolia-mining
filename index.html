@@ -168,6 +168,15 @@ TEMPORARY<//-->                            </h1>
                                 </ul>
                             </li>
                         </ul>
+                        <ul class="map-options dropmenu ">
+                            <li><span>ENVIRONMENT:</span></li>
+                            <li><a href="#" id="layercontrol_indicators" class="arwOrange" onclick="wb.setIndicator(); return false">ENVIRONMENT</a>
+                                <ul class="dropmenu_options">
+                                    <li>Protected Areas (Coming Soon)</li>
+                                    <li>Forest Area (Coming Soon)</li>
+                                </ul>
+                            </li>
+                        </ul>
                         <div id="map-content-icons">
                             <div id="map-content-icons2">
                                 <ul id="mines_sectors">
@@ -195,15 +204,15 @@ TEMPORARY<//-->                            </h1>
                             <li class="sectors"><span>MINING LICENSES: </span></li>
                             <li><a href="#" id="layercontrol_extractives" class="arwOrange" >Production, Percent of Soum</a>
                                 <ul class="dropmenu_options">
-                                    <li class="dropmenu_category">Production</li>
+                                    <li class="dropmenu_category">Production Licenses</li>
                                     <li><a href="#" onclick="wb.setExtractiveIndicator('Licenses','Production percent','Production, % of Soum',true); return false">% of Soum</a></li>
                                     <li><a href="#" onclick="wb.setExtractiveIndicator('Licenses','Production count','Production, # in Soum',true); return false"># in Soum</a></li>
                                                             
-                                    <li class="dropmenu_category">Exploration</li>
+                                    <li class="dropmenu_category">Exploration Licenses</li>
 				    <li><a href="#" onclick="wb.setExtractiveIndicator('Licenses','Exploration percent','Exploration, % of Soum',true); return false">% of Soum</a></li>
                                     <li><a href="#" onclick="wb.setExtractiveIndicator('Licenses','Exploration count','Exploration, # in Soum',true); return false"># in Soum</a></li>
                           
-                                    <li class="dropmenu_category">All</li>
+                                    <li class="dropmenu_category">All Licenses</li>
                                     <li><a href="#" onclick="wb.setExtractiveIndicator('Licenses','All percent','All, % of Soum',true); return false">% of Soum</a></li>
                                     <li><a href="#" onclick="wb.setExtractiveIndicator('Licenses','All count','All, # in Soum',true); return false"># in Soum</a></li>
  
@@ -218,11 +227,12 @@ TEMPORARY<//-->                            </h1>
                             	<li class="sectors"><span>EITI DATA: </span></li>
                             	<li><a href="#" id="layercontrol_company" class="arwOrange" >EITI 2010 Data</a>
                                 	<ul class="dropmenu_options">
-                                		<li class="dropmenu_category">Soum-Level Summary</li>
+                                		<li class="dropmenu_category">Payments by Soum</li>
                                 		<li><a href="#" onclick="wb.setExtractiveIndicator('EITI','National payments','Payments to Central Budget',true); return false">National Payments</a></li>
                                 		<li><a href="#" onclick="wb.setExtractiveIndicator('EITI','Local payments','Payments to Local Budget',true); return false">Local Payments</a></li>
                                     		<li><a href="#" onclick="wb.setExtractiveIndicator('EITI','Total payments','Total Payments to Budget',true); return false">Total Payments</a></li>
-                                    		<li><a href="#" onclick="wb.setExtractiveIndicator('Company','Location','Soums of Operation',true); return false">Where Companies Operate</a></li>
+                                    		<li class="dropmenu_category">Company Operations</li>
+                                    		<li><a href="#" onclick="wb.setExtractiveIndicator('Company','Location','Soums of Operation',true); return false">Location</a></li>
                                     	</ul>
                             	</li>
                        	</ul>
