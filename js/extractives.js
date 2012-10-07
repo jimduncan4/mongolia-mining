@@ -25,7 +25,8 @@
   },
 
   "SPA": {
-   infoWindowFilter:{"title": "$[placenamee] Special Protected Area","subtitle":"", "description":"Special protected area boundaries provided by the Environmental Information Center", "styles": {"type": "PRIMITIVE","stroke": {"color": 0x238443, "weight": 1, "opacity": 0.75},"fill":{"color":[0x238443],"opacity": 0.75}}},
+   infoWindowFilter:{"title": "$[placenamee] Special Protected Area","subtitle":"", "description":"Special protected area boundaries provided by the Environmental Information Center"},
+   "Location":  {"infoWindowFilter": , "styles": {"type": "PRIMITIVE","stroke": {"color": 0x238443, "weight": 1, "opacity": 0.75},"fill":{"color":[0x238443],"opacity": 0.75}}}
   },
   "Aimag indicators": {}
   };
