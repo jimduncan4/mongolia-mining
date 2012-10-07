@@ -1048,7 +1048,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
         
     minesPieChart: function() 
         {
-            jq("#left-chart-title").html("TOTAL GOVERNMENT RECEIPTS")
+            jq("#left-chart-title").html("CHARTS COMING SOON")
             var opts = {};
             var labels = ["Gold","Manganese","Bauxite"];
             var mines = [
@@ -1090,7 +1090,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             opts["chart"] = {legend: labels, colors: colors};
             opts["colors"] = colors;
             opts["href"] = links;
-            F1.Visualizer.charts.pie(190, 380, pie_options, "chart-left-pie-chart", opts);
+//TEMPORARY            F1.Visualizer.charts.pie(190, 380, pie_options, "chart-left-pie-chart", opts);
             
             jq('#sector_funding_total').hide()
             jq("#sector_funding_total").html(total + " Ghana Cedis of revenue")
