@@ -24,9 +24,9 @@
    "Location":  {"infoWindowFilter": {"subtitle": "Total EITI 2010 payments: MNT(000) $[totalpay]"},"styles": {"type": "PRIMITIVE","stroke": {"color": 0x222222, "weight": 1, "opacity": 0.75},"fill":{"color":[0xCCCC66],"opacity": 0.75}}},
   },
 
-  "SPA": {
+  "Special Protected Areas": {
    infoWindowFilter:{"title": "$[placenamee] Special Protected Area","subtitle":"", "description":"Special protected area boundaries provided by the Environmental Information Center"},
-   "Location":  {"infoWindowFilter": , "styles": {"type": "PRIMITIVE","stroke": {"color": 0x238443, "weight": 1, "opacity": 0.75},"fill":{"color":[0x238443],"opacity": 0.75}}}
+   "Location":  {"infoWindowFilter": "styles": {"type": "PRIMITIVE","stroke": {"color": 0x238443, "weight": 1, "opacity": 0.75},"fill":{"color":[0x238443],"opacity": 0.75}}}
   },
   "Aimag indicators": {}
   };
