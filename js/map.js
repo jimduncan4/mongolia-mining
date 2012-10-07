@@ -364,7 +364,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             
             if(indicator == "Special Protected Areas") {
                 var layervisible=self.map.getLayers();
-                if(layervisible[self.stylelayers[layer].order].visible){
+                if(layervisible[self.stylelayers[indicator].order].visible){
                     self.map.showLayer(self.stylelayers[indicator].guid, false);
                 }
                 else {
