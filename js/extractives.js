@@ -21,7 +21,7 @@
  
  "Company": {
    infoWindowFilter:{"title": "$[company_name]","subtitle":"", "tabs": [{"title": "<b>Company Info</b>","type": "text","value": "Company name: $[company_name]\nRegistration number:: $[registration_number]\nInvestment agreement: $[invest_agree]"},{"title": "<b>Minerals</b>","type": "text","value": "Resources being extracted in the soum\nGold: $[gold]\nCopper: $[copper]\nIron: $[iron]\nCoal: $[coal]\nPetroleum: $[petroleum]\nOther: $[other]\nOther minerals include molybdenum, spar, uranium, lignite, plumbum, zinc, sulfide, rocks and construction materials"},{"title": "<b>About</b>","type": "text","value": "Company data was extracted from the 2010 EITI report, and shows all soums in which companies are actively extractive resources. See the About page for more details."}]},
-   "Location":  {"infoWindowFilter": {"subtitle": "Total EITI 2010 payments: MNT(000) $[totalpay]"},"styles": {"type": "PRIMITIVE","stroke": {"color": 0x222222, "weight": 1, "opacity": 0.75},"fill":{"color":[0xCCCC66],"opacity": 0.75}}},
+   "Location":  {"infoWindowFilter": {"subtitle": "Total EITI 2010 payments: MNT(000) $[totalpay]"},"styles": {"type": "PRIMITIVE","stroke": {"color": 0x512506, "weight": 1, "opacity": 0.75},"fill":{"color":[0x793404],"opacity": 0.75}}},
   },
 
   "Special Protected Areas": {
