@@ -115,24 +115,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
         this.options = options;
     };
  
-    F1.WorldBank.indicators = {
-        "Poverty": {source: "finder:", title:"Poverty", subtitle: "Headcount Index", styles: { type: "CHOROPLETH",fill: { colors: [16709541,16698989,15500308,11422722,6694150], categories: 5, classificationNumClasses: 6, classificationType: "St Dev", opacity: 0.75, selectedAttribute: "poverty" }}, infosubtitle: null, table: null, description: "The headcount index is a measure of the percent of the population living below the poverty line. Poverty data was obtained from World Bank Poverty Assessments, CIESIN Small Area Estimates, and national statistics bureaus. See the data source page for information regarding the source of poverty data for each country"},
-        "Infant Mortality": {source: "finder:", title:"Infant Mortality Rate", subtitle: "Per 1,000 live births", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "infantmort"}}, infosubtitle: null, table: null, description: "Infant deaths per 1,000 live births in the 2nd quarter of 2012. Infant mortality rate is the number of infant deaths (deaths before reaching one year of age) per 1,000 for the ten year period preceding the survey.\nSource: <a href='http://www.nso.mn/v3/index2.php?page=free_access' target='_new'>National Statistical Office of Mongolia</a>."},    
-        "Population": {source: "finder:", title:"Population", subtitle: "Number of People", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [0xEFF3FF, 0xBDD7E7, 0x6BAED6, 0x3182BD, 0x08519C], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "population"}}, infosubtitle: "The number of people in each aimag", table: null, description: "The number of people in each aimag in 2010.\nSource: <a href='http://www.nso.mn/v3/index2.php?page=free_access' target='_new'>National Statistical Office of Mongolia</a>."},
-        "Unemployment": {source: "finder:", title:"Unemployment", subtitle: "", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "unemployment"}}, infosubtitle: "The number of people in each aimag not employed in the first half of 2012", table: null, description: "The number of people in each aimag not employed in the first half of 2012. Source: <a href='http://www.nso.mn/v3/index2.php?page=free_access' target='_new'>National Statistical Office of Mongolia</a>."},    
-        "Number of Physicians": {source: "finder:", title:"Number of Physicians", subtitle: "", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [15456706, 13744031, 10782317, 8151635, 4863020], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "physnum"}}, infosubtitle: "The number of physicians in each aimag", table: null, description: "The number of physicians in each aimag in 2010. \nSource: <a href='http://www.nso.mn/v3/index2.php?page=free_access' target='_new'>National Statistical Office of Mongolia</a>."},	
-        "Number of Households": {source: "finder:", title:"Number of Households", subtitle: "", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [5313667, 8608676, 12619965, 14924738, 16573399], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "housenum"}}, infosubtitle: "The number of households in each aimag", table: null, description: "The number of households in each aimag in 2010. \nSource: <a href='http://www.nso.mn/v3/index2.php?page=free_access' target='_new'>National Statistical Office of Mongolia</a>."},	
-        "Soum Boundaries":{source: "finder:", title:"Soum Boundaries", selectedAttribute:"soumnameen",subtitle: "",styles: {type: "PRIMITIVE",stroke: {color: 0x222222, weight: 1, opacity: 0.75},fill:{color:[0xCCCC66],opacity: 0.75}},infosubtitle: "$[soumnameen] Soum", table: null, description: "Soum boundaries provided by the <a href='http://www.icc.mn/' target='_new'>Environmental Information Center</a>."},
-        "Special Protected Areas":{source: "finder",title:"Special Protected Areas", selectedAttribute:"placenamee",subtitle:"",styles:{}},
-        "Mineral deposits": {source: "finder:", title:"Mineral deposits", selectedAttribute: "mineral", styles: {}},
-        "Mines": {source: "finder:", title:"Mines", selectedAttribute: "mines", styles: {}},
-        "Licenses":{source: "finder:", title:"Licenses", selectedAttribute:"licenses",styles: {}},
-        "EITI":{source: "finder:", title:"EITI", selectedAttribute:"eiti",styles: {}},
-        "Company":{source: "finder:", title:"Company", selectedAttribute:"company",styles: {}},
-        "Oil wells": {source: "finder:", title:"Oil wells", selectedAttribute: "oil", styles: {}},
-        "District revenues": {source: "finder:", title:"District revenues", selectedAttribute: "TOTAL_REC", styles: {}}	
-    };
- 
     F1.WorldBank.prototype = {
     
     init: function(map_id, country, region, country_attrs, embed, callback) 
@@ -140,6 +122,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             var self = this;
             this.activities = {};
             this.projects = country_attrs.projects;
+            this.companies=country_attrs.companies;
             this.visibleSectors = [];
             this.map_id = map_id;
             if(embed !== undefined && embed !== null)
@@ -372,6 +355,16 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 }
             }
             
+            if(indicator == "Forest") {
+                var layervisible=self.map.getLayers();
+                if(layervisible[self.stylelayers[indicator].order].visible){
+                    self.map.showLayer(self.stylelayers[indicator].guid, false);
+                }
+                else {
+                    self.map.showLayer(self.stylelayers[indicator].guid, true);
+                }
+            }
+
             else {
                 //District revenues check and Mines check disables
                 //self.map.showLayer(self.stylelayers["District revenues"].guid, false);
@@ -381,6 +374,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
                     self.map.addFilter(self.stylelayers[indicator].guid, {expression : s_attr["expression"]});
                     self.map.showLayer(self.stylelayers["EITI"].guid,false);
                     self.map.showLayer(self.stylelayers["Company"].guid,false);
+                    self.map.showLayer(self.stylelayers["Donations"].guid,false);
                     self.map.showLayer(self.stylelayers["Licenses"].guid, true);
                     jq('#layercontrol_company').html("Not Shown");
                     jq('#layercontrol_extractives').html(title);
@@ -388,14 +382,25 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 else if (indicator=="EITI"){
                     self.map.showLayer(self.stylelayers["Licenses"].guid,false);
                     self.map.showLayer(self.stylelayers["Company"].guid,false);
+                    self.map.showLayer(self.stylelayers["Donations"].guid,false);
                     self.map.showLayer(self.stylelayers["EITI"].guid, true);
                     self.showVisibleMines(indicator,"Company");
+                    jq('#layercontrol_company').html(title);
+                    jq('#layercontrol_extractives').html("Not Shown");
+                }
+                
+                else if (indicator=="Donations"){
+                    self.map.showLayer(self.stylelayers["Licenses"].guid,false);
+                    self.map.showLayer(self.stylelayers["Company"].guid,false);
+                    self.map.showLayer(self.stylelayers["EITI"].guid,false);
+                    self.map.showLayer(self.stylelayers["Donations"].guid, true);
                     jq('#layercontrol_company').html(title);
                     jq('#layercontrol_extractives').html("Not Shown");
                 }
                 else if (indicator=="Company"){
                     self.map.showLayer(self.stylelayers["Licenses"].guid,false);
                     self.map.showLayer(self.stylelayers["EITI"].guid,false);
+                    self.map.showLayer(self.stylelayers["Donations"].guid,false);
                     self.map.showLayer(self.stylelayers["Company"].guid, true);
                     self.showVisibleMines(indicator,"EITI");
                     jq('#layercontrol_company').html(title);
@@ -440,7 +445,10 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 else {
                     jq(classname).removeClass('active').addClass('inactive');
                 }
-                if(layervisible[self.stylelayers[layer].order].visible){
+ var visibility =layervisible[self.stylelayers[layer].order].visible;
+ 
+ var visibility2 =layervisible[self.stylelayers[offlayer].order].visible;
+ if(layervisible[self.stylelayers[layer].order].visible){
                     self.showVisibleMines(layer, offlayer);
                 }
                 else if(layervisible[self.stylelayers[offlayer].order].visible){
@@ -689,7 +697,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             
             for(var sector=0;sector<sectorFilters.length; sector++) {
 //                expression += "$["+sector_attribute+"] == '" + sectorFilters[sector] + "'"; GHANA VERSION
-                expression += "$["+sectorFilters[sector]+"] == '" + sector_attribute+"'";
+                expression += "$["+sectorFilters[sector]+"] == '" + sector_attribute+"'"; //MONGOLIA VERSION
                 if(sector != sectorFilters.length-1)
                     expression += " OR ";
             }
@@ -729,7 +737,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             else {
                 jq('#layercontrol_indicators').html(indicator);
                 
-                var style = F1.WorldBank.indicators[indicator].styles;
+                var style = F1.WorldBank.extractives[indicator].styles;
                 if (indicator!="Soum Boundaries") {
                     style.source = self.stylelayers[indicator].source;
                     if (self.current_indicator="Soum Boundaries"){
@@ -741,20 +749,19 @@ if(typeof(F1)=='undefined') {F1 = {};}
                     self.map.setLayerStyle(self.stylelayers[indicator].guid, style);
                 
                 var infotabs = [];
-                if(F1.WorldBank.indicators[indicator].table !== undefined && F1.WorldBank.indicators[indicator].table !== null)
-                    infotabs.push({title: "Data", type:"table", value:F1.WorldBank.indicators[indicator].table})
-                    if(F1.WorldBank.indicators[indicator].description !== undefined && F1.WorldBank.indicators[indicator].description !== null)
-                        infotabs.push({title: "About", type: "text", value:F1.WorldBank.indicators[indicator].description})
-                        var infosub = F1.WorldBank.indicators[indicator].subtitle;
-                if(F1.WorldBank.indicators[indicator].infosubtitle !== undefined && F1.WorldBank.indicators[indicator].infosubtitle !== null)
-                    infosub = F1.WorldBank.indicators[indicator].infosubtitle
+                if(F1.WorldBank.extractives[indicator].table !== undefined && F1.WorldBank.extractives[indicator].table !== null)
+                    infotabs.push({title: "Data", type:"table", value:F1.WorldBank.extractives[indicator].table})
+                    if(F1.WorldBank.extractives[indicator].description !== undefined && F1.WorldBank.extractives[indicator].description !== null)
+                        infotabs.push({title: "About", type: "text", value:F1.WorldBank.extractives[indicator].description})
+                        var infosub = F1.WorldBank.extractives[indicator].subtitle;
+                if(F1.WorldBank.extractives[indicator].infosubtitle !== undefined && F1.WorldBank.extractives[indicator].infosubtitle !== null)
+                    infosub = F1.WorldBank.extractives[indicator].infosubtitle
                     
-                    //infotabs.push({title:"Other Indicators", type: "text", value: "Maternal health: $[Maternal health]% of births attended by skilled health provider\nInfant mortality: $[Infant mortality] per 1000 live births\nMalnutrition: $[Malnutrition]%\nUnemployment rate: $[Unemployment rate]%\nRegional population: $[Regional population] people\nRegional population year: $[Regional population year]\nWealth quintile - highest: $[Wealth quintile - highest]%\nWealth quintile - second highest: $[Wealth quintile - second highest]%\nWealth quintile - fourth highest: $[Wealth quintile - fourth highest]%\nWealth quintile - lowest: $[Wealth quintile - lowest]%\nWealth quintile - middle: $[Wealth quintile - middle]%\nFor further information about these indicators, refer to the <a href='http://maps.worldbank.org/extractives/about' target='_new'>About page</a>"})
-                    try {
-                        self.map.setLayerInfoWindow(self.stylelayers[indicator].guid, {title: indicator + ": $["+ F1.WorldBank.indicators[indicator].styles.fill.selectedAttribute +"]", subtitle: infosub, tabs:infotabs});
+                  try {
+                        self.map.setLayerInfoWindow(self.stylelayers[indicator].guid, {title: indicator + ": $["+ F1.WorldBank.extractives[indicator].styles.fill.selectedAttribute +"]", subtitle: infosub, tabs:infotabs});
                         
-                        self.map.setLayerTitle(self.stylelayers[indicator].guid, F1.WorldBank.indicators[indicator].title);
-                        self.map.setLayerSubTitle(self.stylelayers[indicator].guid, F1.WorldBank.indicators[indicator].subtitle);
+                        self.map.setLayerTitle(self.stylelayers[indicator].guid, F1.WorldBank.extractives[indicator].title);
+                        self.map.setLayerSubTitle(self.stylelayers[indicator].guid, F1.WorldBank.extractives[indicator].subtitle);
                         self.map.showLayer(self.stylelayers[indicator].guid, true);
                         
                         // China Indicators for Poverty
@@ -782,8 +789,16 @@ if(typeof(F1)=='undefined') {F1 = {};}
             this.map.clearHighlights(self.stylelayers["Mines"].guid);
             this.map.addHighlight(self.stylelayers["Mines"].guid,{expression: highlightExpression});
         },
-        
-    highlightProject: function(project_id, project_name) 
+ 
+    highlightCompany: function(attribute, company)
+        {
+            var self = this;
+            var highlightExpression = "$[" + attribute + "] == "+company;
+            self.map.clearHighlights(self.stylelayers["Company"].guid);
+            this.map.addHighlight(self.stylelayers["Company"].guid,{expression: highlightExpression});
+        },
+ 
+    highlightProject: function(project_id, project_name)
         {
             var self = this;
             if(project_name !== undefined && project_name !== null)
@@ -1046,76 +1061,74 @@ if(typeof(F1)=='undefined') {F1 = {};}
             
         },
         
-    minesPieChart: function() 
+    minesPieChart: function(data)
         {
-            jq("#left-chart-title").html("CHARTS COMING SOON")
             var opts = {};
-            var labels = ["Gold","Manganese","Bauxite"];
-            var mines = [
-                         {"id": 1, "mineral_type": "Gold", "Total_company_payments": 14169108,"CompanyURL": "","CSR_url": "", "Total_government_receipts": "13805875", "Total_difference": "363233", "Sustainability_reports_available": "No", "Company_name": "AngloGold Ashanti - Bibiani"},
-                         {"id": 2, "mineral_type": "Bauxite", "Total_company_payments": 2368407,"CompanyURL": "","CSR_url": "", "Total_government_receipts": "2366252", "Total_difference": "2155", "Sustainability_reports_available": "No", "Company_name": "Ghana Bauxite Company"},
-                         {"id": 3, "mineral_type": "Gold", "Total_company_payments": 32305692,"CompanyURL": "http://www.goldfields.co.za/ops_int_damang.php","CSR_url": "http://www.goldfields.co.za/sus_reports.php", "Total_government_receipts": "32581943", "Total_difference": "-276251", "Sustainability_reports_available": "Yes", "Company_name": "Goldfields - Damang"},
-                         {"id": 4, "mineral_type": "Gold", "Total_company_payments": 122052830,"CompanyURL": "http://www.goldfields.co.za/ops_int_tarkwa.php","CSR_url": "http://www.goldfields.co.za/sus_reports.php", "Total_government_receipts": "121557596", "Total_difference": "495234", "Sustainability_reports_available": "Yes", "Company_name": "Goldfields - Tarkwa"},
-                         {"id": 5, "mineral_type": "Manganese", "Total_company_payments": 9043739,"CompanyURL": "http://www.ghamang.net/index.html","CSR_url": "http://www.ghamang.net/peo.html", "Total_government_receipts": "9042513", "Total_difference": "1226", "Sustainability_reports_available": "Yes", "Company_name": "Ghana Manganse Company"},
-                         {"id": 6, "mineral_type": "Gold", "Total_company_payments": 11667129,"CompanyURL": "http://www.gsr.com/Operations/Bogoso.asp","CSR_url": "http://www.gsr.com/Social_Responsibility/index.asp", "Total_government_receipts": "11665765", "Total_difference": "1364", "Sustainability_reports_available": "Yes", "Company_name": "Golden Star Resources - Prestea/Bogosu"},
-                         {"id": 7, "mineral_type": "Gold", "Total_company_payments": 7461289,"CompanyURL": "http://www.gsr.com/Operations/Wassa.asp","CSR_url": "http://www.gsr.com/Social_Responsibility/index.asphttp://www.gsr.com/Social_Responsibility/index.asp", "Total_government_receipts": "7550526", "Total_difference": "-89237", "Sustainability_reports_available": "Yes", "Company_name": "Golden Star Resources - Wassa"},
-                         {"id": 8, "mineral_type": "Gold", "Total_company_payments": 22786778,"CompanyURL": "http://www.newmont.com/africa","CSR_url": "http://beyondthemine.com/2010/", "Total_government_receipts": "22786774", "Total_difference": "-4", "Sustainability_reports_available": "Yes", "Company_name": "Newmont Mining Corporation"},
-                         {"id": 9, "mineral_type": "Gold", "Total_company_payments": 0,"CompanyURL": "http://www.gnpcghana.com/subsidiaries/mining.asp","CSR_url": "", "Total_government_receipts": "", "Total_difference": "", "Sustainability_reports_available": "No", "Company_name": "Prestea Sankofa Gold"},
-                         {"id": 10, "mineral_type": "Gold", "Total_company_payments": 18993757,"CompanyURL": "http://www.anglogold.com/default.htm","CSR_url": "http://www.anglogold.com/subwebs/InformationForInvestors/Reports10/Sustainability/default.htm", "Total_government_receipts": "18019542", "Total_difference": "974215", "Sustainability_reports_available": "Yes", "Company_name": "AngloGold Ashanti - Iduaprim"},
-                         {"id": 11, "mineral_type": "Gold", "Total_company_payments": 31782907,"CompanyURL": "http://www.anglogold.com/default.htm","CSR_url": "http://www.anglogold.com/subwebs/InformationForInvestors/Reports10/Sustainability/default.htm", "Total_government_receipts": "30819631", "Total_difference": "963276", "Sustainability_reports_available": "Yes", "Company_name": "AngloGold Ashanti - Obuasi"},
-                         {"id": 12, "mineral_type": "Gold", "Total_company_payments": 6149323,"CompanyURL": "http://www.centralafricangold.com/","CSR_url": "", "Total_government_receipts": "5742802", "Total_difference": "406521", "Sustainability_reports_available": "No", "Company_name": "Central African Gold"},
-                         {"id": 13, "mineral_type": "Gold", "Total_company_payments": 6685562,"CompanyURL": "http://www.kinross.com/operations/operation-chirano-ghana.aspx","CSR_url": "http://www.kinross.com/corporate-responsibility/corporate-responsibility-reports.aspx", "Total_government_receipts": "6656562", "Total_difference": "29000", "Sustainability_reports_available": "Yes", "Company_name": "Kinross - Chirano"}
-                         ]
-            mineral_type = {}
-            total = 0;
-            jq.each(mines, function(i,mine) {
-                    if(mineral_type[mine["mineral_type"]] === undefined || mineral_type[mine["mineral_type"]] === null) {
-                    mineral_type[mine["mineral_type"]] = 0;
-                    }
-                    mineral_type[mine["mineral_type"]] += mine["Total_company_payments"]
-                    total += mine["Total_company_payments"];
-                    })
-            minerals = []
+            var labels = ["Corporate income tax","Value added tax","License fees","Windfall tax","Production sharing","Other payments"];
+        payment_type = ["corp_inc_tax","vat","license_fee","windfall","psa_payment","other_payment"]
+        payment_total={}
+ 
+        jq.each(payment_type, function(j,payment){
+                if(payment_total[payment]=== undefined||payment_total[payment]===null){
+                    payment_total[payment]=0;
+                }
+         })
+
+        total = 0;
+//            jq.each(mines, function(i,mine) {
+//                    if(mineral_type[mine["mineral_type"]] === undefined || mineral_type[mine["mineral_type"]] === null) {
+//                    mineral_type[mine["mineral_type"]] = 0;
+//                    }
+//                    mineral_type[mine["mineral_type"]] += mine["Total_company_payments"]
+//                    total += mine["Total_company_payments"];
+//                    })
+ 
+ 
+            jq.each(data, function(i,company) {
+                    jq.each(payment_type, function(j,payment){
+                            payment_total[payment] += company[payment]
+                            total += company[payment]
+                            })})
+
+ 
+            payments = []
             var links = []
-            jq.each(mineral_type, function(type,amount) {
-                    minerals.push({"mineral ty": type, "Total_government_receipts": amount})
-                    links.push("javascript:wb.highlightMine('mineral ty', '" + type + "');")
+            jq.each(payment_total, function(type,amount) {
+                    payments.push({"payment_type": type, "total": amount})
                     })
-            pie_options = {"features":minerals,
-                "attributes": {"data":{"name": "Total government receipts","original_name": "Total_government_receipts"},
-                    "description":{"name": "Mineral Type","original_name": "mineral ty"},
-                    "sort":{"name": "Total government receipts","original_name": "Total_government_receipts"} } };
+            pie_options = {"features":payments,
+                "attributes": {"data":{"name": "Total payment","original_name": "total"},
+                    "description":{"name": "Payment type","original_name": "payment_type"},
+                    "sort":{"name": "Total payment","original_name": "total"} } };
             
-            var colors = ["#ffcc00", "#ff8e3a", "#7a7efe"]
+            var colors = ["#B84C02", "#FE9929", "#FEE281", "#D0D1E6", "#909FC2", "#44637B"]
             opts["chart"] = {legend: labels, colors: colors};
             opts["colors"] = colors;
             opts["href"] = links;
-//TEMPORARY            F1.Visualizer.charts.pie(190, 380, pie_options, "chart-left-pie-chart", opts);
+            F1.Visualizer.charts.pie(190, 380, pie_options, "chart-left-pie-chart", opts);
             
-            jq('#sector_funding_total').hide()
-            jq("#sector_funding_total").html(total + " Ghana Cedis of revenue")
+            jq("#sector_funding_total").html(Math.round(total/100)/10 + " million ₮ in total")
             
             var self = this;
             
             var table = '<table id="project-info"><thead><tr>';
-            jq.each(["Company Name", "Resource Type","Company Payments (2004 to 2008)", "Government Receipts (2004 to 2008)", "Total Difference (Payments - Receipts)", "Sustainability Reports Available?"], function(index,header) {
+            jq.each(["Company name", "Registration number","Location (if given)", "Investment agreement", "2010 National payments", " 2010 Local payments", "2010 Total payments"], function(index,header) {
                     table += tmpl(table_templates.th, {id: index,header: header});
                     });
             table += "</tr></thead><tbody>"
             
-            jq.each(mines, function(index, mine) {
-                    mine["even"] = ((index+1) % 2 == 0) ? "row_even" : "row_odd";
+            jq.each(data, function(index, company) {
+                    company["even"] = ((index+1) % 2 == 0) ? "row_even" : "row_odd";
                     
-                    table += tmpl(table_templates.mine, mine);
+                    table += tmpl(table_templates.company, company);
                     });
             table += "</tbody></table>"
-//TEMPORARY            jq("#map-table").append(table);
+            jq("#map-table").append(table);
             
             jq("#project-info tr").live("click", function() {
-                                        self.highlightMine("Company name", jq(this).attr("data-project-id"));
+                                        self.highlightCompany("comp_num", jq(this).attr("data-project-id"));
                                         });
-            jq("#map-table").append("<h1><span>TABLE COMING SOON</span></h1>")
-        },
+            },
         
     regionFundingBars: function() 
         {
@@ -1210,42 +1223,10 @@ if(typeof(F1)=='undefined') {F1 = {};}
             xLabel.node.id = "preview_xaxis"
         },
         
-    projectFundingBars: function() 
+    getLayers: function()
         {
             var self = this;
-            var s;
-            var features = [];
-            var links = [];
-            var colors = [];
-            
-            jq.each(self.projects, function(index, project) {
-                    features.push(project);
-                    links.push( "javascript:wb.highlightProject('" + project["id"] + "','');");
-                    var sname = project.mjsector1.toLowerCase().trim();
-                    // if(Object.include(self.sector_names, sname) && Object.include(self.sectors, self.sector_names[sname])) {
-                    colors.push(self.sectors[self.sector_names[sname]].color);
-                    // }
-                    });
-            
-            jq('#funding_total').html("$" + self.total_funding.toFixed(1) + " million");
-            
-            bar_options = {"features":features, "attributes": {
-                "data":{"name": "Financing Amount", "original_name": "totalamt"},
-                "description":{"name": "Project", "original_name": "project_name"},
-                "sort":{"name": "Total Amount","original_name": "totalamt"} } };
-            
-            barchart = F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {data_label: true, href: links, colors: colors, label: function() {
-                                                return links[this.bar.index];
-                                                }, onclick: function() {
-                                                wb.highlightProject(features[this.bar.index].id, '');;
-                                                }});
-            
-        },	
-        
-    getLayers: function() 
-        {
-            var self = this;
-            var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Number of Physicians", "Number of Households", "Special Protected Areas","Unemployment", "Soum Boundaries", "Mines", "Licenses","EITI","Company","Oil wells", "Oil fields", "District revenues", "Mineral deposits", "No Data"];
+            var findlayers = ["Indicators","Population","Infant Mortality", "Number of Physicians", "Number of Households", "Special Protected Areas","Forest", "Unemployment", "Soum Boundaries", "Licenses","EITI","Donations","Company","Company Info","No Data"];
             
             possibleLayers = self.map.getLayers();
             
@@ -1254,8 +1235,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
                     index = Object.include(findlayers, possibleLayers[layer].title);
                     if(index !== undefined && index !== null){
                     self.stylelayers[findlayers[index]] = {guid: possibleLayers[layer].guid, order: possibleLayers[layer].order, source: possibleLayers[layer].source, sharedLayer: false};
-                    if(Object.include(["Infant Mortality", "Population", "Poverty", "Number of Physicians", "Number of Households", "Unemployment"], possibleLayers[layer].title)) {
-                    F1.WorldBank.indicators[possibleLayers[layer].title].styles.fill.selectedAttribute = possibleLayers[layer].styles.fill.selectedAttribute;
+                    if(Object.include(["Infant Mortality", "Population", "Number of Physicians", "Number of Households", "Unemployment"], possibleLayers[layer].title)) {
+                    F1.WorldBank.extractives[possibleLayers[layer].title].styles.fill.selectedAttribute = possibleLayers[layer].styles.fill.selectedAttribute;
                     }
                     findlayers.splice(index,1);
                     }	
@@ -1273,10 +1254,12 @@ if(typeof(F1)=='undefined') {F1 = {};}
             var downloads = {//"Project Locations": "csv",
                 "Licenses": "csv",
                 "EITI": "csv",
-                "Company": "shapefile",
-                "Indicators": "shapefile",
+                "Donations" : "csv",
+                "Company": "csv",
+                "Indicators": "csv",
                 "Soum Boundaries": "shapefile",
-                "Special Protected Areas":"shapefile"
+                "Special Protected Areas":"shapefile",
+                "Forest":"shapefile"
                 };
             
             jq("#data_links").html("")
@@ -1289,26 +1272,11 @@ if(typeof(F1)=='undefined') {F1 = {};}
                     jq("#data_links").append("<li><a href='http://geocommons.com/overlays/" + self.stylelayers[index].source.replace('finder:','') +"."+format+"'>"+index+" ("+download+")</a></li>");
                     
                     })
-            // if(self.stylelayers["Project Counts"] !== undefined)
-            // jq("#data_links").append("<li><a href='http://maps.worldbank.org/datasets/" + self.stylelayers['Project Counts'].source.replace('finder:','') +".csv'>Project Counts (csv)</a></li>");
-            // if(self.stylelayers["Indicators"] !== undefined)
-            // jq("#data_links").append("<li><a href='http://maps.worldbank.org/datasets/" + self.stylelayers['Indicators'].source.replace('finder:','') +".zip'>Indicators (shapefile)</a></li>");
-            // if(self.stylelayers["Population"] !== undefined)
-            // jq("#data_links").append("<li><a href='http://maps.worldbank.org/datasets/" + self.stylelayers['Population'].source.replace('finder:','') +".csv'>Population (csv)</a></li>");
-            //
-            
+        
             return false;
         },
         
-    loadProjects: function(dataid) 
-        {
-            var self = this;
-            self.map.addLayer({source:"finder:" + dataid, categoryFilter: {attribute:major_sector_name,categories:self.wbicons}, styles: {opacity: 1.0}, zoomToExtent: true })
-            // loadProjects is never called
-            
-        },
-        
-    styleMap: function() 
+    styleMap: function()
         {
             var self = this;
             log("styleMap", self.stylelayers)
@@ -1353,19 +1321,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             return false;
         },
         
-    highlightRegions: function(regions, region_attr) 
-        {
-            var self = this;
-            if(region_attr === undefined || region_attr === null)
-                region_attr = "Country_1";
-            
-            self.map.clearHighlights(0);
-            jq.map(regions,function(region) {
-                   self.map.addHighlight(0, {expression: "$["+region_attr+"] == '"+region+"'"});
-                   });
-        },
-        
-    hideLoading: function() 
+    hideLoading: function()
         {
             jq("#loading").hide();
             jq(".loaded").show();
@@ -1443,22 +1399,13 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 self.hoverWindow(self.stylelayers["Project Locations"], "count");
                 
             } else if(self.thematic_area == "extractives_controls") {
-                jq('#project_count').html("282,595,781");
-                jq('#active_projects_header').html("Ghana Cedis of revenue in")
-                jq('#activity_count').html(14);
-                jq('#mapped_locations_header').html("mapped locations")
-                //self.toggleExtractive("Mines","all", true)
-                //self.toggleExtractive("Mineral deposits","all", false)
-                //self.toggleExtractive("Oil fields","all", true)
+                jq('#project_count').html("112");
+                jq('#active_projects_header').html("companies mapped to")
+                jq('#activity_count').html(74);
+                jq('#mapped_locations_header').html("soums")
                 self.map.setMapStyle( {zoom: { offset: {x:15,y:90}}} )
-                //self.setExtractiveIndicator('Mines','Total production','Production',true)
                 self.setExtractiveIndicator('Licenses','Production percent','Production, Percent of Soum',true)
-                //self.setExtractiveIndicator('Oil wells','Lift total','Production',true)
-                //self.map.addLayerCategoryFilter(self.stylelayers["Mines"].guid,F1.WorldBank.extractives["Mines"]["Location"])
-                //self.map.addLayerCategoryFilter(self.stylelayers["Mineral deposits"].guid,F1.WorldBank.extractives["Mineral deposits"]["Deposits"])
-                //self.map.setLayerStyle(self.stylelayers["Oil wells"].guid,F1.WorldBank.extractives["Oil wells"]["Location"])
-                //self.map.setLayerStyle(self.stylelayers["Mineral deposits"].guid, F1.WorldBank.extractives["Mineral deposits"]["Deposits"])
-                self.minesPieChart()
+                self.minesPieChart(self.companies)
             }
             self.loadState();
             jq("#map-summary").show();
@@ -1467,7 +1414,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 self.sortProjects(self.projects);
                 self.projectTable(self.projects);
                 log("sortProjects");
-                // self.projectFundingBars();
                 self.toggleSector("all", false, false);
                 log("sectorPieChart");
             }

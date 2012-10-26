@@ -24,6 +24,7 @@ function initializeEvents() {
         return false;
     });
     
+
     jq("#locations_list .inactive").click(function () {
         return false;
     });
