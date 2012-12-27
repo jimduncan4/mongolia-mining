@@ -277,7 +277,10 @@ ul.links li, ul.links li a{
 
 #lang ul li#english {
     border: 1px solid #D2D5C8;
-    margin-right: 5px;
+}
+
+#lang ul li#english a{
+    color: #B8B8B8;
 }
 
 #share {
