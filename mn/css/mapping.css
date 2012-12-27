@@ -271,13 +271,13 @@ ul.links li, ul.links li a{
 }
 
 #lang ul li#mongolian {
-    border: 1px solid #D2D5C8;
-    margin-right: 5px;
+    border: 1px solid #AAACA1;
+    background-color:#D9DBCC;
 }
 
 #lang ul li#english {
-    border: 1px solid #AAACA1;
-    background-color:#D9DBCC;
+    border: 1px solid #D2D5C8;
+    margin-right: 5px;
 }
 
 #share {
