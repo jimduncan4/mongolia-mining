@@ -27,5 +27,12 @@
 
 <body>
     <iframe src="./en/index.html" width="100%" height="1400"></iframe>
+    var myIframe = $(document.frames['idIframe']);
     
+    $(document).bind('resize', function() {
+    
+    myIframe.attr("width", $(this).width());
+    myIframe.attr("height", $(this).height());
+    
+    });
 </body>
