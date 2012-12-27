@@ -272,7 +272,7 @@ ul.links li, ul.links li a{
 }
 
 #lang ul li#mongolian {
-    border: 1px solid #D2D5C8
+    border: 1px solid #D2D5C8;
     margin-right: 5px;
 }
 
