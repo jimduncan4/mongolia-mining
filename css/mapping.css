@@ -252,6 +252,13 @@ ul.links li, ul.links li a{
     padding: 0;
 }
 
+#lang ul {
+    float: left;
+    list-style: none outside none;
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
 #share {
     float: right;
     margin: 0;
