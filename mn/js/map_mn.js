@@ -721,7 +721,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             return expression;
         },	
         
-    setIndicator: function(indicator,visible) 
+    setIndicator: function(indicator,title)
         {
             var self = this;
             
@@ -735,13 +735,13 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 self.map.showLayer(self.stylelayers[indicator].guid, false);
             }
             else {
-                jq('#layercontrol_indicators').html(F1.WorldBank.extractives[indicator].title);
+                jq('#layercontrol_indicators').html(title);
                 
                 var style = F1.WorldBank.extractives[indicator].styles;
                 if (indicator!="Soum Boundaries") {
                     style.source = self.stylelayers[indicator].source;
-                    if (self.current_indicator="Soum Boundaries"){
-                        self.map.showLayer(self.stylelayers[indicator].guid,false);
+                if (self.current_indicator="Soum Boundaries"){
+                    self.map.showLayer(self.stylelayers[indicator].guid,false);
                     }
                 }
                 
