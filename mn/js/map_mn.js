@@ -760,10 +760,10 @@ if(typeof(F1)=='undefined') {F1 = {};}
                   try {
                     if(indicator!="Soum Boundaries"){
  
-                        self.map.setLayerInfoWindow(self.stylelayers[indicator].guid, {title: indicator + ": $["+ F1.WorldBank.extractives[indicator].styles.fill.selectedAttribute +"]", subtitle: infosub, tabs:infotabs});
+                        self.map.setLayerInfoWindow(self.stylelayers[indicator].guid, {title: title + ": $["+ F1.WorldBank.extractives[indicator].styles.fill.selectedAttribute +"]", subtitle: infosub, tabs:infotabs});
                     }
                     else{
-                        self.map.setLayerInfoWindow(self.stylelayers[indicator].guid, {title: F1.WorldBank.extractives[indicator].title, subtitle: F1.WorldBank.extractives[indicator].subtitle})
+ self.map.setLayerInfoWindow(self.stylelayers[indicator].guid, {title: F1.WorldBank.extractives[indicator].title, subtitle: F1.WorldBank.extractives[indicator].subtitle, tabs:infotabs})
                     }
                         self.map.setLayerTitle(self.stylelayers[indicator].guid, F1.WorldBank.extractives[indicator].title);
                         self.map.setLayerSubTitle(self.stylelayers[indicator].guid, F1.WorldBank.extractives[indicator].subtitle);
