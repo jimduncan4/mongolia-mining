@@ -735,7 +735,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 self.map.showLayer(self.stylelayers[indicator].guid, false);
             }
             else {
-                jq('#layercontrol_indicators').html(indicator);
+                jq('#layercontrol_indicators').html(F1.WorldBank.extractives[indicator][title]);
                 
                 var style = F1.WorldBank.extractives[indicator].styles;
                 if (indicator!="Soum Boundaries") {
